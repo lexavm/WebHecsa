@@ -3,36 +3,38 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-#nullable disable
 
 namespace WebHecsa.Models
 {
-    public partial class CatMarca
+    public class TblProductoPromocion
     {
-        public CatMarca()
-        {
-            CatCategoria = new HashSet<CatCategoria>();
-        }
+     
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int IdMarca { get; set; }
+        public int IdProductoPromocion { get; set; }
+
+        [Display(Name = "Producto")]
+        [Required(ErrorMessage = "Campo Requerido")]
+        public int IdProducto { get; set; }
+
         [Display(Name = "Descripción")]
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "Campo Requerido")]
-        public string MarcaDesc { get; set; }
-        public Guid IdProveedor { get; set; }
-        [Display(Name = "Proveedor")]
-        [NotMapped]
-        public string NombreProveedor { get; set; }
+        public decimal PromocionDesc { get; set; }
+
+        [Display(Name = "Porcentaje")]
+        [Required(ErrorMessage = "Campo Requerido")]
+        public decimal PorcentajePrecioUno { get; set; }
+
         [Column("FechaRegistro")]
         [DataType(DataType.Date)]
         [Display(Name = "Fecha Registro")]
         public DateTime FechaRegistro { get; set; }
+
         [Display(Name = "Estatus")]
         public int IdEstatusRegistro { get; set; }
-        public Guid? IdProveedorNavigationIdProveedor { get; set; }
 
-        public virtual TblProveedor IdProveedorNavigationIdProveedorNavigation { get; set; }
-        public virtual ICollection<CatCategoria> CatCategoria { get; set; }
+        public virtual CatProducto IdProductoNavigationIdCategoriaNavigation { get; set; }
+
     }
 }

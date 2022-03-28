@@ -586,7 +586,7 @@ namespace WebHecsa.Migrations
                     IdProducto = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CodigoInterno = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CodigoExterno = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CodigoExterno = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IdMarca = table.Column<int>(type: "int", nullable: false),
                     IdCategoria = table.Column<int>(type: "int", nullable: false),
                     DescProducto = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -609,6 +609,30 @@ namespace WebHecsa.Migrations
                         column: x => x.IdCategoriaNavigationIdCategoriaNavigationIdCategoria,
                         principalTable: "CatCategorias",
                         principalColumn: "IdCategoria",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TblProductoPromociones",
+                columns: table => new
+                {
+                    IdProductoPromocion = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdProducto = table.Column<int>(type: "int", nullable: false),
+                    PromocionDesc = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    PorcentajePrecioUno = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IdEstatusRegistro = table.Column<int>(type: "int", nullable: false),
+                    IdProductoNavigationIdCategoriaNavigationIdProducto = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TblProductoPromociones", x => x.IdProductoPromocion);
+                    table.ForeignKey(
+                        name: "FK_TblProductoPromociones_CatProductos_IdProductoNavigationIdCategoriaNavigationIdProducto",
+                        column: x => x.IdProductoNavigationIdCategoriaNavigationIdProducto,
+                        principalTable: "CatProductos",
+                        principalColumn: "IdProducto",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -678,6 +702,11 @@ namespace WebHecsa.Migrations
                 column: "IdEstatusRegistroNavigationIdEstatusRegistroNavigationIdEstatusRegistro");
 
             migrationBuilder.CreateIndex(
+                name: "IX_TblProductoPromociones_IdProductoNavigationIdCategoriaNavigationIdProducto",
+                table: "TblProductoPromociones",
+                column: "IdProductoNavigationIdCategoriaNavigationIdProducto");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TblProveedorContactos_IdProveedorNavigationIdProveedorNavigationIdProveedor",
                 table: "TblProveedorContactos",
                 column: "IdProveedorNavigationIdProveedorNavigationIdProveedor");
@@ -719,9 +748,6 @@ namespace WebHecsa.Migrations
                 name: "CatCodigosPostales");
 
             migrationBuilder.DropTable(
-                name: "CatProductos");
-
-            migrationBuilder.DropTable(
                 name: "CatTiposEstatus");
 
             migrationBuilder.DropTable(
@@ -734,6 +760,9 @@ namespace WebHecsa.Migrations
                 name: "TblCotizacionGenerals");
 
             migrationBuilder.DropTable(
+                name: "TblProductoPromociones");
+
+            migrationBuilder.DropTable(
                 name: "TblProveedorContactos");
 
             migrationBuilder.DropTable(
@@ -741,9 +770,6 @@ namespace WebHecsa.Migrations
 
             migrationBuilder.DropTable(
                 name: "TblUsuarios");
-
-            migrationBuilder.DropTable(
-                name: "CatCategorias");
 
             migrationBuilder.DropTable(
                 name: "CatTipoDirecciones");
@@ -761,6 +787,9 @@ namespace WebHecsa.Migrations
                 name: "TblEmpresaFiscales");
 
             migrationBuilder.DropTable(
+                name: "CatProductos");
+
+            migrationBuilder.DropTable(
                 name: "CatAreas");
 
             migrationBuilder.DropTable(
@@ -771,6 +800,9 @@ namespace WebHecsa.Migrations
 
             migrationBuilder.DropTable(
                 name: "CatRoles");
+
+            migrationBuilder.DropTable(
+                name: "CatCategorias");
 
             migrationBuilder.DropTable(
                 name: "CatMarcas");

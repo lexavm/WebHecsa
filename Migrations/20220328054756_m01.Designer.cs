@@ -10,7 +10,7 @@ using WebHecsa.Data;
 namespace WebHecsa.Migrations
 {
     [DbContext(typeof(nDbContext))]
-    [Migration("20220328044931_m01")]
+    [Migration("20220328054756_m01")]
     partial class m01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -281,6 +281,7 @@ namespace WebHecsa.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CodigoExterno")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CodigoInterno")
@@ -787,6 +788,39 @@ namespace WebHecsa.Migrations
                     b.ToTable("TblEmpresaFiscales");
                 });
 
+            modelBuilder.Entity("WebHecsa.Models.TblProductoPromocion", b =>
+                {
+                    b.Property<int>("IdProductoPromocion")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("FechaRegistro");
+
+                    b.Property<int>("IdEstatusRegistro")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdProducto")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IdProductoNavigationIdCategoriaNavigationIdProducto")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("PorcentajePrecioUno")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PromocionDesc")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("IdProductoPromocion");
+
+                    b.HasIndex("IdProductoNavigationIdCategoriaNavigationIdProducto");
+
+                    b.ToTable("TblProductoPromociones");
+                });
+
             modelBuilder.Entity("WebHecsa.Models.TblProveedor", b =>
                 {
                     b.Property<Guid>("IdProveedor")
@@ -1127,6 +1161,15 @@ namespace WebHecsa.Migrations
                     b.Navigation("IdEmpresaNavigationIdEmpresaNavigation");
                 });
 
+            modelBuilder.Entity("WebHecsa.Models.TblProductoPromocion", b =>
+                {
+                    b.HasOne("WebHecsa.Models.CatProducto", "IdProductoNavigationIdCategoriaNavigation")
+                        .WithMany("TblProductoPromociones")
+                        .HasForeignKey("IdProductoNavigationIdCategoriaNavigationIdProducto");
+
+                    b.Navigation("IdProductoNavigationIdCategoriaNavigation");
+                });
+
             modelBuilder.Entity("WebHecsa.Models.TblProveedor", b =>
                 {
                     b.HasOne("WebHecsa.Models.TblEmpresa", "IdEmpresaNavigationIdEmpresaNavigation")
@@ -1214,6 +1257,11 @@ namespace WebHecsa.Migrations
             modelBuilder.Entity("WebHecsa.Models.CatPerfil", b =>
                 {
                     b.Navigation("TblUsuarios");
+                });
+
+            modelBuilder.Entity("WebHecsa.Models.CatProducto", b =>
+                {
+                    b.Navigation("TblProductoPromociones");
                 });
 
             modelBuilder.Entity("WebHecsa.Models.CatRole", b =>

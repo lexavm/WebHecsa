@@ -16,11 +16,16 @@ namespace WebHecsa.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdCategoria { get; set; }
-        [Display(Name = "Descripción")]
+        [Display(Name = "Categoria")]
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "Campo Requerido")]
         public string CategoriaDesc { get; set; }
+        [Display(Name = "Marca")]
+        [Required(ErrorMessage = "Campo Requerido")]
         public int IdMarca { get; set; }
+        [Display(Name = "Marca")]
+        [NotMapped]
+        public string MarcaDesc { get; set; }
         [Column("FechaRegistro")]
         [DataType(DataType.Date)]
         [Display(Name = "Fecha Registro")]

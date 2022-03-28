@@ -42,6 +42,8 @@ namespace WebHecsa.Data
         public virtual DbSet<TblProveedorDireccion> TblProveedorDirecciones { get; set; }
         public virtual DbSet<TblUsuario> TblUsuarios { get; set; }
 
+        public virtual DbSet<TblProductoPromocion> TblProductoPromociones { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

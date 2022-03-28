@@ -55,7 +55,7 @@ namespace WebHecsa.Models
         [Display(Name = "Telefono")]
 
         public string Telefono { get; set; }
-        [Column("FechaRegistro")]
+        [Column("Fecha Registro")]
         [DataType(DataType.Date)]
 
         public DateTime FechaRegistro { get; set; }

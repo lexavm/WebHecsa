@@ -20,7 +20,7 @@ namespace WebHecsa.Models
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "Campo Requerido")]
         public string DivisaDesc { get; set; }
-        [Column("FechaRegistro")]
+        [Column("Fecha Registro")]
         [DataType(DataType.Date)]
         public DateTime FechaRegistro { get; set; }
         [Display(Name = "Estatus")]

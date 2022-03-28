@@ -12,16 +12,22 @@ namespace WebHecsa.Models
         public TblCliente()
         {
             TblClienteContactos = new HashSet<TblClienteContacto>();
-            TblClienteDirecciones = new HashSet<TblClienteDireccion>();
+            TblClienteDireccion = new HashSet<TblClienteDireccion>();
         }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid IdCliente { get; set; }
+        [Display(Name = "Nombre Cliente")]
+        [Required(ErrorMessage = "Campo Requerido")]
         public string NombreCliente { get; set; }
+        [Display(Name = "RFC")]
+
         public string Rfc { get; set; }
+        [Display(Name = "Giro Comercial")]
+
         public string GiroComercial { get; set; }
         public Guid IdEmpresa { get; set; }
-        [Column("FechaRegistro")]
+        [Column("Fecha Registro")]
         [DataType(DataType.Date)]
         [Display(Name = "Fecha Registro")]
         public DateTime FechaRegistro { get; set; }
@@ -31,6 +37,6 @@ namespace WebHecsa.Models
 
         public virtual TblEmpresa IdEmpresaNavigationIdEmpresaNavigation { get; set; }
         public virtual ICollection<TblClienteContacto> TblClienteContactos { get; set; }
-        public virtual ICollection<TblClienteDireccion> TblClienteDirecciones { get; set; }
+        public virtual ICollection<TblClienteDireccion> TblClienteDireccion { get; set; }
     }
 }

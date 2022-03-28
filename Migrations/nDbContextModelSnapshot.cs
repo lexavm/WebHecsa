@@ -150,10 +150,12 @@ namespace WebHecsa.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("DivisaDesc")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaRegistro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("Fecha Registro");
 
                     b.Property<int>("IdEstatusRegistro")
                         .HasColumnType("int");
@@ -171,6 +173,7 @@ namespace WebHecsa.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("EstatusDesc")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaRegistro")
@@ -190,9 +193,11 @@ namespace WebHecsa.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("FechaRegistro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("FechaRegistro");
 
                     b.Property<string>("GeneroDesc")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("IdEstatusRegistro")
@@ -211,7 +216,8 @@ namespace WebHecsa.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("FechaRegistro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("FechaRegistro");
 
                     b.Property<int>("IdEstatusRegistro")
                         .HasColumnType("int");
@@ -226,6 +232,7 @@ namespace WebHecsa.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("MarcaDesc")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdMarca");
@@ -235,7 +242,7 @@ namespace WebHecsa.Migrations
                     b.ToTable("CatMarcas");
                 });
 
-            modelBuilder.Entity("WebHecsa.Models.CatPerfile", b =>
+            modelBuilder.Entity("WebHecsa.Models.CatPerfil", b =>
                 {
                     b.Property<int>("IdPerfil")
                         .ValueGeneratedOnAdd()
@@ -243,12 +250,14 @@ namespace WebHecsa.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("FechaRegistro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("FechaRegistro");
 
                     b.Property<int>("IdEstatusRegistro")
                         .HasColumnType("int");
 
                     b.Property<string>("PerfilDesc")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdPerfil");
@@ -282,7 +291,8 @@ namespace WebHecsa.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaRegistro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("FechaRegistro");
 
                     b.Property<int>("IdCategoria")
                         .HasColumnType("int");
@@ -323,12 +333,14 @@ namespace WebHecsa.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("FechaRegistro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("FechaRegistro");
 
                     b.Property<int>("IdEstatusRegistro")
                         .HasColumnType("int");
 
                     b.Property<string>("RolDesc")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdRol");
@@ -344,17 +356,19 @@ namespace WebHecsa.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("FechaRegistro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("FechaRegistro");
 
                     b.Property<int>("IdEstatusRegistro")
                         .HasColumnType("int");
 
                     b.Property<string>("TipoDireccionDesc")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdTipoDireccion");
 
-                    b.ToTable("CatTipoDireccions");
+                    b.ToTable("CatTipoDirecciones");
                 });
 
             modelBuilder.Entity("WebHecsa.Models.CatTipoEnvio", b =>
@@ -365,12 +379,14 @@ namespace WebHecsa.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("FechaRegistro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("FechaRegistro");
 
                     b.Property<int>("IdEstatusRegistro")
                         .HasColumnType("int");
 
                     b.Property<string>("TiposEnvioDesc")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdTiposEnvio");
@@ -406,7 +422,8 @@ namespace WebHecsa.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("FechaRegistro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("FechaRegistro");
 
                     b.Property<string>("GiroComercial")
                         .HasColumnType("nvarchar(max)");
@@ -424,6 +441,7 @@ namespace WebHecsa.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("NombreCliente")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rfc")
@@ -444,10 +462,12 @@ namespace WebHecsa.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CorreoElectronico")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaRegistro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("Fecha Registro");
 
                     b.Property<Guid>("IdCliente")
                         .HasColumnType("uniqueidentifier");
@@ -465,6 +485,7 @@ namespace WebHecsa.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("NombreClienteContacto")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Telefono")
@@ -488,6 +509,7 @@ namespace WebHecsa.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Calle")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ciudad")
@@ -500,13 +522,15 @@ namespace WebHecsa.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CorreoElectronico")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estado")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaRegistro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("Fecha Registro");
 
                     b.Property<Guid>("IdCliente")
                         .HasColumnType("uniqueidentifier");
@@ -649,13 +673,15 @@ namespace WebHecsa.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CorreoElectronico")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estado")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaRegistro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("Fecha Registro");
 
                     b.Property<string>("GiroComercial")
                         .HasColumnType("nvarchar(max)");
@@ -676,6 +702,7 @@ namespace WebHecsa.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NombreEmpresa")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rfc")
@@ -710,13 +737,15 @@ namespace WebHecsa.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CorreoElectronico")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estado")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaRegistro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("FechaRegistro");
 
                     b.Property<string>("IdColonia")
                         .HasColumnType("nvarchar(max)");
@@ -737,6 +766,7 @@ namespace WebHecsa.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NombreFiscal")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RegimenFiscal")
@@ -762,7 +792,8 @@ namespace WebHecsa.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("FechaRegistro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("Fecha Registro");
 
                     b.Property<string>("GiroComercial")
                         .HasColumnType("nvarchar(max)");
@@ -780,6 +811,7 @@ namespace WebHecsa.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("NombreProveedor")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rfc")
@@ -789,7 +821,7 @@ namespace WebHecsa.Migrations
 
                     b.HasIndex("IdEmpresaNavigationIdEmpresaNavigationIdEmpresa");
 
-                    b.ToTable("TblProveedors");
+                    b.ToTable("TblProveedores");
                 });
 
             modelBuilder.Entity("WebHecsa.Models.TblProveedorContacto", b =>
@@ -800,10 +832,12 @@ namespace WebHecsa.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CorreoElectronico")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaRegistro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("Fecha Registro");
 
                     b.Property<int>("IdEstatusRegistro")
                         .HasColumnType("int");
@@ -821,6 +855,7 @@ namespace WebHecsa.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("NombreProveedorContacto")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Telefono")
@@ -844,6 +879,7 @@ namespace WebHecsa.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Calle")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ciudad")
@@ -856,13 +892,15 @@ namespace WebHecsa.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CorreoElectronico")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estado")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaRegistro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("Fecha Registro");
 
                     b.Property<string>("IdColonia")
                         .HasColumnType("nvarchar(max)");
@@ -1037,11 +1075,11 @@ namespace WebHecsa.Migrations
             modelBuilder.Entity("WebHecsa.Models.TblClienteDireccion", b =>
                 {
                     b.HasOne("WebHecsa.Models.TblCliente", "IdClienteNavigationIdClienteNavigation")
-                        .WithMany("TblClienteDirecciones")
+                        .WithMany("TblClienteDireccion")
                         .HasForeignKey("IdClienteNavigationIdClienteNavigationIdCliente");
 
                     b.HasOne("WebHecsa.Models.CatTipoDireccion", "IdTipoDireccionNavigationIdTipoDireccionNavigation")
-                        .WithMany("TblClienteDirecciones")
+                        .WithMany("TblClienteDireccion")
                         .HasForeignKey("IdTipoDireccionNavigationIdTipoDireccionNavigationIdTipoDireccion");
 
                     b.Navigation("IdClienteNavigationIdClienteNavigation");
@@ -1109,7 +1147,7 @@ namespace WebHecsa.Migrations
             modelBuilder.Entity("WebHecsa.Models.TblProveedorDireccion", b =>
                 {
                     b.HasOne("WebHecsa.Models.TblProveedor", "IdProveedorNavigationIdProveedorNavigation")
-                        .WithMany("TblProveedorDirecciones")
+                        .WithMany("TblProveedorDireccion")
                         .HasForeignKey("IdProveedorNavigationIdProveedorNavigationIdProveedor");
 
                     b.Navigation("IdProveedorNavigationIdProveedorNavigation");
@@ -1125,7 +1163,7 @@ namespace WebHecsa.Migrations
                         .WithMany("TblUsuarios")
                         .HasForeignKey("IdGeneroNavigationIdGeneroNavigationIdGenero");
 
-                    b.HasOne("WebHecsa.Models.CatPerfile", "IdPerfilNavigationIdPerfilNavigation")
+                    b.HasOne("WebHecsa.Models.CatPerfil", "IdPerfilNavigationIdPerfilNavigation")
                         .WithMany("TblUsuarios")
                         .HasForeignKey("IdPerfilNavigationIdPerfilNavigationIdPerfil");
 
@@ -1172,7 +1210,7 @@ namespace WebHecsa.Migrations
                     b.Navigation("CatCategoria");
                 });
 
-            modelBuilder.Entity("WebHecsa.Models.CatPerfile", b =>
+            modelBuilder.Entity("WebHecsa.Models.CatPerfil", b =>
                 {
                     b.Navigation("TblUsuarios");
                 });
@@ -1184,7 +1222,7 @@ namespace WebHecsa.Migrations
 
             modelBuilder.Entity("WebHecsa.Models.CatTipoDireccion", b =>
                 {
-                    b.Navigation("TblClienteDirecciones");
+                    b.Navigation("TblClienteDireccion");
                 });
 
             modelBuilder.Entity("WebHecsa.Models.CatTipoEnvio", b =>
@@ -1196,7 +1234,7 @@ namespace WebHecsa.Migrations
                 {
                     b.Navigation("TblClienteContactos");
 
-                    b.Navigation("TblClienteDirecciones");
+                    b.Navigation("TblClienteDireccion");
                 });
 
             modelBuilder.Entity("WebHecsa.Models.TblEmpresa", b =>
@@ -1221,7 +1259,7 @@ namespace WebHecsa.Migrations
 
                     b.Navigation("TblProveedorContactos");
 
-                    b.Navigation("TblProveedorDirecciones");
+                    b.Navigation("TblProveedorDireccion");
                 });
 #pragma warning restore 612, 618
         }

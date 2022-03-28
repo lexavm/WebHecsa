@@ -35,7 +35,7 @@ namespace WebHecsa.Controllers
                 ViewBag.EstatusFlag = 0;
                 _notyf.Information("Favor de registrar los Estatus para la Aplicación", 5);
             }
-            return View(await _context.CatTipoDireccions.ToListAsync());
+            return View(await _context.CatTipoDirecciones.ToListAsync());
         }
 
         // GET: CatTipoDireccions/Details/5
@@ -46,7 +46,7 @@ namespace WebHecsa.Controllers
                 return NotFound();
             }
 
-            var catTipoDireccion = await _context.CatTipoDireccions
+            var catTipoDireccion = await _context.CatTipoDirecciones
                 .FirstOrDefaultAsync(m => m.IdTipoDireccion == id);
             if (catTipoDireccion == null)
             {
@@ -71,7 +71,7 @@ namespace WebHecsa.Controllers
         {
             if (ModelState.IsValid)
             {
-                var vDuplicados = _context.CatTipoDireccions
+                var vDuplicados = _context.CatTipoDirecciones
                          .Where(s => s.TipoDireccionDesc == catTipoDireccion.TipoDireccionDesc)
                          .ToList();
 
@@ -107,7 +107,7 @@ namespace WebHecsa.Controllers
                 return NotFound();
             }
 
-            var catTipoDireccion = await _context.CatTipoDireccions.FindAsync(id);
+            var catTipoDireccion = await _context.CatTipoDirecciones.FindAsync(id);
             if (catTipoDireccion == null)
             {
                 return NotFound();
@@ -163,7 +163,7 @@ namespace WebHecsa.Controllers
                 return NotFound();
             }
 
-            var catTipoDireccion = await _context.CatTipoDireccions
+            var catTipoDireccion = await _context.CatTipoDirecciones
                 .FirstOrDefaultAsync(m => m.IdTipoDireccion == id);
             if (catTipoDireccion == null)
             {
@@ -178,7 +178,7 @@ namespace WebHecsa.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var catTipoDireccion = await _context.CatTipoDireccions.FindAsync(id);
+            var catTipoDireccion = await _context.CatTipoDirecciones.FindAsync(id);
             catTipoDireccion.IdEstatusRegistro = 2;
             _context.SaveChanges();
             await _context.SaveChangesAsync();
@@ -188,7 +188,7 @@ namespace WebHecsa.Controllers
 
         private bool CatTipoDireccionExists(int id)
         {
-            return _context.CatTipoDireccions.Any(e => e.IdTipoDireccion == id);
+            return _context.CatTipoDirecciones.Any(e => e.IdTipoDireccion == id);
         }
     }
 }

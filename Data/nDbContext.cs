@@ -28,7 +28,7 @@ namespace WebHecsa.Data
         public virtual DbSet<CatPerfil> CatPerfiles { get; set; }
         public virtual DbSet<CatProducto> CatProductos { get; set; }
         public virtual DbSet<CatRole> CatRoles { get; set; }
-        public virtual DbSet<CatTipoDireccion> CatTipoDireccions { get; set; }
+        public virtual DbSet<CatTipoDireccion> CatTipoDirecciones { get; set; }
         public virtual DbSet<CatTipoEnvio> CatTipoEnvios { get; set; }
         public virtual DbSet<CatTiposEstatus> CatTiposEstatus { get; set; }
         public virtual DbSet<TblCliente> TblClientes { get; set; }
@@ -37,7 +37,7 @@ namespace WebHecsa.Data
         public virtual DbSet<TblCotizacionGeneral> TblCotizacionGenerals { get; set; }
         public virtual DbSet<TblEmpresa> TblEmpresas { get; set; }
         public virtual DbSet<TblEmpresaFiscal> TblEmpresaFiscales { get; set; }
-        public virtual DbSet<TblProveedor> TblProveedors { get; set; }
+        public virtual DbSet<TblProveedor> TblProveedores { get; set; }
         public virtual DbSet<TblProveedorContacto> TblProveedorContactos { get; set; }
         public virtual DbSet<TblProveedorDireccion> TblProveedorDirecciones { get; set; }
         public virtual DbSet<TblUsuario> TblUsuarios { get; set; }

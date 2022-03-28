@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using WebHecsa.Data;
 using WebHecsa.Models;
 
-namespace WebAdminHecsa.Controllers
+namespace WebHecsa.Controllers
 {
     public class CatGeneroesController : Controller
     {

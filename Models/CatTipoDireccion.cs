@@ -11,7 +11,7 @@ namespace WebHecsa.Models
     {
         public CatTipoDireccion()
         {
-            TblClienteDirecciones = new HashSet<TblClienteDireccion>();
+            TblClienteDireccion = new HashSet<TblClienteDireccion>();
         }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -27,6 +27,6 @@ namespace WebHecsa.Models
         [Display(Name = "Estatus")]
         public int IdEstatusRegistro { get; set; }
 
-        public virtual ICollection<TblClienteDireccion> TblClienteDirecciones { get; set; }
+        public virtual ICollection<TblClienteDireccion> TblClienteDireccion { get; set; }
     }
 }

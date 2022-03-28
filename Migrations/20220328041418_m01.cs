@@ -40,8 +40,8 @@ namespace WebHecsa.Migrations
                 {
                     IdDivisa = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DivisaDesc = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DivisaDesc = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FechaRegistro = table.Column<DateTime>(name: "Fecha Registro", type: "datetime2", nullable: false),
                     IdEstatusRegistro = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -55,7 +55,7 @@ namespace WebHecsa.Migrations
                 {
                     IdEstatusRegistro = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EstatusDesc = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EstatusDesc = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -69,7 +69,7 @@ namespace WebHecsa.Migrations
                 {
                     IdGenero = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GeneroDesc = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GeneroDesc = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IdEstatusRegistro = table.Column<int>(type: "int", nullable: false)
                 },
@@ -84,7 +84,7 @@ namespace WebHecsa.Migrations
                 {
                     IdPerfil = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PerfilDesc = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PerfilDesc = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IdEstatusRegistro = table.Column<int>(type: "int", nullable: false)
                 },
@@ -99,7 +99,7 @@ namespace WebHecsa.Migrations
                 {
                     IdRol = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RolDesc = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RolDesc = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IdEstatusRegistro = table.Column<int>(type: "int", nullable: false)
                 },
@@ -109,18 +109,18 @@ namespace WebHecsa.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CatTipoDireccions",
+                name: "CatTipoDirecciones",
                 columns: table => new
                 {
                     IdTipoDireccion = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TipoDireccionDesc = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TipoDireccionDesc = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IdEstatusRegistro = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CatTipoDireccions", x => x.IdTipoDireccion);
+                    table.PrimaryKey("PK_CatTipoDirecciones", x => x.IdTipoDireccion);
                 });
 
             migrationBuilder.CreateTable(
@@ -129,7 +129,7 @@ namespace WebHecsa.Migrations
                 {
                     IdTiposEnvio = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TiposEnvioDesc = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TiposEnvioDesc = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IdEstatusRegistro = table.Column<int>(type: "int", nullable: false)
                 },
@@ -158,7 +158,7 @@ namespace WebHecsa.Migrations
                 columns: table => new
                 {
                     IdEmpresa = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NombreEmpresa = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NombreEmpresa = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rfc = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GiroComercial = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Calle = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -168,9 +168,9 @@ namespace WebHecsa.Migrations
                     LocalidadMunicipio = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Ciudad = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Estado = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CorreoElectronico = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CorreoElectronico = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaRegistro = table.Column<DateTime>(name: "Fecha Registro", type: "datetime2", nullable: false),
                     IdEstatusRegistro = table.Column<int>(type: "int", nullable: false),
                     IdEstatusRegistroNavigationIdEstatusRegistro = table.Column<int>(type: "int", nullable: true),
                     IdEstatusRegistroNavigationIdEstatusRegistroNavigationIdEstatusRegistro = table.Column<int>(type: "int", nullable: true)
@@ -214,7 +214,7 @@ namespace WebHecsa.Migrations
                 columns: table => new
                 {
                     IdCliente = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NombreCliente = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NombreCliente = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rfc = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GiroComercial = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdEmpresa = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -239,7 +239,7 @@ namespace WebHecsa.Migrations
                 columns: table => new
                 {
                     IdEmpresaFiscales = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NombreFiscal = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NombreFiscal = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rfc = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RegimenFiscal = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Calle = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -249,7 +249,7 @@ namespace WebHecsa.Migrations
                     LocalidadMunicipio = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Ciudad = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Estado = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CorreoElectronico = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CorreoElectronico = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdEmpresa = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -269,24 +269,24 @@ namespace WebHecsa.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TblProveedors",
+                name: "TblProveedores",
                 columns: table => new
                 {
                     IdProveedor = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NombreProveedor = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NombreProveedor = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rfc = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GiroComercial = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdEmpresa = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaRegistro = table.Column<DateTime>(name: "Fecha Registro", type: "datetime2", nullable: false),
                     IdEstatusRegistro = table.Column<int>(type: "int", nullable: false),
                     IdEmpresaNavigationIdEmpresa = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IdEmpresaNavigationIdEmpresaNavigationIdEmpresa = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TblProveedors", x => x.IdProveedor);
+                    table.PrimaryKey("PK_TblProveedores", x => x.IdProveedor);
                     table.ForeignKey(
-                        name: "FK_TblProveedors_TblEmpresas_IdEmpresaNavigationIdEmpresaNavigationIdEmpresa",
+                        name: "FK_TblProveedores_TblEmpresas_IdEmpresaNavigationIdEmpresaNavigationIdEmpresa",
                         column: x => x.IdEmpresaNavigationIdEmpresaNavigationIdEmpresa,
                         principalTable: "TblEmpresas",
                         principalColumn: "IdEmpresa",
@@ -357,12 +357,12 @@ namespace WebHecsa.Migrations
                     IdClienteContacto = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdPerfil = table.Column<int>(type: "int", nullable: false),
-                    NombreClienteContacto = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CorreoElectronico = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NombreClienteContacto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CorreoElectronico = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TelefonoMovil = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdCliente = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaRegistro = table.Column<DateTime>(name: "Fecha Registro", type: "datetime2", nullable: false),
                     IdEstatusRegistro = table.Column<int>(type: "int", nullable: false),
                     IdClienteNavigationIdCliente = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IdClienteNavigationIdClienteNavigationIdCliente = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
@@ -385,17 +385,17 @@ namespace WebHecsa.Migrations
                     IdClienteDirecciones = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdTipoDireccion = table.Column<int>(type: "int", nullable: false),
-                    Calle = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Calle = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CodigoPostal = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdColonia = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Colonia = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LocalidadMunicipio = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Ciudad = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Estado = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CorreoElectronico = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CorreoElectronico = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdCliente = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaRegistro = table.Column<DateTime>(name: "Fecha Registro", type: "datetime2", nullable: false),
                     IdEstatusRegistro = table.Column<int>(type: "int", nullable: false),
                     IdClienteNavigationIdCliente = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IdTipoDireccionNavigationIdTipoDireccion = table.Column<int>(type: "int", nullable: true),
@@ -406,9 +406,9 @@ namespace WebHecsa.Migrations
                 {
                     table.PrimaryKey("PK_TblClienteDirecciones", x => x.IdClienteDirecciones);
                     table.ForeignKey(
-                        name: "FK_TblClienteDirecciones_CatTipoDireccions_IdTipoDireccionNavigationIdTipoDireccionNavigationIdTipoDireccion",
+                        name: "FK_TblClienteDirecciones_CatTipoDirecciones_IdTipoDireccionNavigationIdTipoDireccionNavigationIdTipoDireccion",
                         column: x => x.IdTipoDireccionNavigationIdTipoDireccionNavigationIdTipoDireccion,
-                        principalTable: "CatTipoDireccions",
+                        principalTable: "CatTipoDirecciones",
                         principalColumn: "IdTipoDireccion",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -476,7 +476,7 @@ namespace WebHecsa.Migrations
                 {
                     IdMarca = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MarcaDesc = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MarcaDesc = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IdProveedor = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IdEstatusRegistro = table.Column<int>(type: "int", nullable: false),
@@ -487,9 +487,9 @@ namespace WebHecsa.Migrations
                 {
                     table.PrimaryKey("PK_CatMarcas", x => x.IdMarca);
                     table.ForeignKey(
-                        name: "FK_CatMarcas_TblProveedors_IdProveedorNavigationIdProveedorNavigationIdProveedor",
+                        name: "FK_CatMarcas_TblProveedores_IdProveedorNavigationIdProveedorNavigationIdProveedor",
                         column: x => x.IdProveedorNavigationIdProveedorNavigationIdProveedor,
-                        principalTable: "TblProveedors",
+                        principalTable: "TblProveedores",
                         principalColumn: "IdProveedor",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -501,12 +501,12 @@ namespace WebHecsa.Migrations
                     IdProveedorContacto = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdPerfil = table.Column<int>(type: "int", nullable: false),
-                    NombreProveedorContacto = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CorreoElectronico = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NombreProveedorContacto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CorreoElectronico = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TelefonoMovil = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdProveedor = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaRegistro = table.Column<DateTime>(name: "Fecha Registro", type: "datetime2", nullable: false),
                     IdEstatusRegistro = table.Column<int>(type: "int", nullable: false),
                     IdProveedorNavigationIdProveedor = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IdProveedorNavigationIdProveedorNavigationIdProveedor = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
@@ -515,9 +515,9 @@ namespace WebHecsa.Migrations
                 {
                     table.PrimaryKey("PK_TblProveedorContactos", x => x.IdProveedorContacto);
                     table.ForeignKey(
-                        name: "FK_TblProveedorContactos_TblProveedors_IdProveedorNavigationIdProveedorNavigationIdProveedor",
+                        name: "FK_TblProveedorContactos_TblProveedores_IdProveedorNavigationIdProveedorNavigationIdProveedor",
                         column: x => x.IdProveedorNavigationIdProveedorNavigationIdProveedor,
-                        principalTable: "TblProveedors",
+                        principalTable: "TblProveedores",
                         principalColumn: "IdProveedor",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -529,17 +529,17 @@ namespace WebHecsa.Migrations
                     IdProveedorDirecciones = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdTipoDireccion = table.Column<int>(type: "int", nullable: false),
-                    Calle = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Calle = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CodigoPostal = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdColonia = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Colonia = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LocalidadMunicipio = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Ciudad = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Estado = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CorreoElectronico = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CorreoElectronico = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdProveedor = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaRegistro = table.Column<DateTime>(name: "Fecha Registro", type: "datetime2", nullable: false),
                     IdEstatusRegistro = table.Column<int>(type: "int", nullable: false),
                     IdProveedorNavigationIdProveedor = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IdProveedorNavigationIdProveedorNavigationIdProveedor = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
@@ -548,9 +548,9 @@ namespace WebHecsa.Migrations
                 {
                     table.PrimaryKey("PK_TblProveedorDirecciones", x => x.IdProveedorDirecciones);
                     table.ForeignKey(
-                        name: "FK_TblProveedorDirecciones_TblProveedors_IdProveedorNavigationIdProveedorNavigationIdProveedor",
+                        name: "FK_TblProveedorDirecciones_TblProveedores_IdProveedorNavigationIdProveedorNavigationIdProveedor",
                         column: x => x.IdProveedorNavigationIdProveedorNavigationIdProveedor,
-                        principalTable: "TblProveedors",
+                        principalTable: "TblProveedores",
                         principalColumn: "IdProveedor",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -688,8 +688,8 @@ namespace WebHecsa.Migrations
                 column: "IdProveedorNavigationIdProveedorNavigationIdProveedor");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TblProveedors_IdEmpresaNavigationIdEmpresaNavigationIdEmpresa",
-                table: "TblProveedors",
+                name: "IX_TblProveedores_IdEmpresaNavigationIdEmpresaNavigationIdEmpresa",
+                table: "TblProveedores",
                 column: "IdEmpresaNavigationIdEmpresaNavigationIdEmpresa");
 
             migrationBuilder.CreateIndex(
@@ -746,7 +746,7 @@ namespace WebHecsa.Migrations
                 name: "CatCategorias");
 
             migrationBuilder.DropTable(
-                name: "CatTipoDireccions");
+                name: "CatTipoDirecciones");
 
             migrationBuilder.DropTable(
                 name: "TblClientes");
@@ -776,7 +776,7 @@ namespace WebHecsa.Migrations
                 name: "CatMarcas");
 
             migrationBuilder.DropTable(
-                name: "TblProveedors");
+                name: "TblProveedores");
 
             migrationBuilder.DropTable(
                 name: "TblEmpresas");

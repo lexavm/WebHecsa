@@ -1,0 +1,41 @@
+﻿@model WebHecsa.Models.CatRole
+
+@{
+    ViewData["Title"] = "Crear Rol";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">HECSA</li>
+        <li class="breadcrumb-item">Información</li>
+        <li class="breadcrumb-item">Catálogos</li>
+        <li class="breadcrumb-item">Rol</li>
+        <li class="breadcrumb-item">Control de Rol</li>
+        <li class="breadcrumb-item active" aria-current="page">Crear Rol</li>
+    </ol>
+</nav>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RolDesc" class="control-label"></label>
+                <input style="text-transform:uppercase" asp-for="RolDesc" class="form-control" />
+                <span asp-validation-for="RolDesc" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <input style="text-transform:uppercase" type="submit" value="Crear" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-secondary">Regresar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

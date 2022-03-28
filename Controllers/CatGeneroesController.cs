@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 using WebHecsa.Data;
 using WebHecsa.Models;
 
-namespace WebHecsa.Controllers
+namespace WebAdminHecsa.Controllers
 {
-    public class CatEstatusController : Controller
+    public class CatGeneroesController : Controller
     {
         private readonly nDbContext _context;
         private readonly INotyfService _notyf;
 
-        public CatEstatusController(nDbContext context, INotyfService notyf)
+        public CatGeneroesController(nDbContext context, INotyfService notyf)
         {
             _context = context;
             _notyf = notyf;
         }
 
-        // GET: CatEstatus
+        // GET: CatGeneroes
         public async Task<IActionResult> Index()
         {
             var ValidaEstatus = _context.CatEstatus.ToList();
@@ -35,10 +35,10 @@ namespace WebHecsa.Controllers
                 ViewBag.EstatusFlag = 0;
                 _notyf.Information("Favor de registrar los Estatus para la Aplicación", 5);
             }
-            return View(await _context.CatEstatus.ToListAsync());
+            return View(await _context.CatGeneros.ToListAsync());
         }
 
-        // GET: CatEstatus/Details/5
+        // GET: CatGeneroes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -46,43 +46,43 @@ namespace WebHecsa.Controllers
                 return NotFound();
             }
 
-            var CatEstatus = await _context.CatEstatus
-                .FirstOrDefaultAsync(m => m.IdEstatusRegistro == id);
-            if (CatEstatus == null)
+            var catGenero = await _context.CatGeneros
+                .FirstOrDefaultAsync(m => m.IdGenero == id);
+            if (catGenero == null)
             {
                 return NotFound();
             }
 
-            return View(CatEstatus);
+            return View(catGenero);
         }
 
-        // GET: CatEstatus/Create
+        // GET: CatGeneroes/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: CatEstatus/Create
+        // POST: CatGeneroes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdEstatus,EstatusDesc")] CatEstatus CatEstatus)
+        public async Task<IActionResult> Create([Bind("IdGenero,GeneroDesc")] CatGenero catGenero)
         {
             if (ModelState.IsValid)
             {
-                var vDuplicados = _context.CatEstatus
-                       .Where(s => s.EstatusDesc == CatEstatus.EstatusDesc)
+                var vDuplicados = _context.CatGeneros
+                       .Where(s => s.GeneroDesc == catGenero.GeneroDesc)
                        .ToList();
 
                 if (vDuplicados.Count == 0)
                 {
-                    CatEstatus.FechaRegistro = DateTime.Now;
-                    CatEstatus.EstatusDesc = CatEstatus.EstatusDesc.ToString().ToUpper();
-                 
+                    catGenero.FechaRegistro = DateTime.Now;
+                    catGenero.GeneroDesc = catGenero.GeneroDesc.ToString().ToUpper();
+                    catGenero.IdEstatusRegistro = 1;
                     _context.SaveChanges();
 
-                    _context.Add(CatEstatus);
+                    _context.Add(catGenero);
                     await _context.SaveChangesAsync();
                     _notyf.Success("Registro creado con éxito", 5);
                 }
@@ -94,10 +94,10 @@ namespace WebHecsa.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(CatEstatus);
+            return View(catGenero);
         }
 
-        // GET: CatEstatus/Edit/5
+        // GET: CatGeneroes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             List<CatEstatus> ListaCatEstatus = new List<CatEstatus>();
@@ -109,22 +109,22 @@ namespace WebHecsa.Controllers
                 return NotFound();
             }
 
-            var CatEstatus = await _context.CatEstatus.FindAsync(id);
-            if (CatEstatus == null)
+            var catGenero = await _context.CatGeneros.FindAsync(id);
+            if (catGenero == null)
             {
                 return NotFound();
             }
-            return View(CatEstatus);
+            return View(catGenero);
         }
 
-        // POST: CatEstatus/Edit/5
+        // POST: CatGeneroes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdEstatus,EstatusDesc,FechaRegistro,IdEstatusRegistro")] CatEstatus CatEstatus)
+        public async Task<IActionResult> Edit(int id, [Bind("IdGenero,GeneroDesc,IdEstatusRegistro")] CatGenero catGenero)
         {
-            if (id != CatEstatus.IdEstatusRegistro)
+            if (id != catGenero.IdGenero)
             {
                 return NotFound();
             }
@@ -133,17 +133,17 @@ namespace WebHecsa.Controllers
             {
                 try
                 {
-                    CatEstatus.FechaRegistro = DateTime.Now;
-                    CatEstatus.EstatusDesc = CatEstatus.EstatusDesc.ToString().ToUpper();
-                    CatEstatus.IdEstatusRegistro = CatEstatus.IdEstatusRegistro;
+                    catGenero.FechaRegistro = DateTime.Now;
+                    catGenero.GeneroDesc = catGenero.GeneroDesc.ToString().ToUpper();
+                    catGenero.IdEstatusRegistro = catGenero.IdEstatusRegistro;
                     _context.SaveChanges();
-                    _context.Update(CatEstatus);
+                    _context.Update(catGenero);
                     await _context.SaveChangesAsync();
                     _notyf.Warning("Registro actualizado con éxito", 5);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CatEstatusExists(CatEstatus.IdEstatusRegistro))
+                    if (!CatGeneroExists(catGenero.IdGenero))
                     {
                         return NotFound();
                     }
@@ -154,10 +154,10 @@ namespace WebHecsa.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(CatEstatus);
+            return View(catGenero);
         }
 
-        // GET: CatEstatus/Delete/5
+        // GET: CatGeneroes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -165,32 +165,32 @@ namespace WebHecsa.Controllers
                 return NotFound();
             }
 
-            var CatEstatus = await _context.CatEstatus
-                .FirstOrDefaultAsync(m => m.IdEstatusRegistro == id);
-            if (CatEstatus == null)
+            var catGenero = await _context.CatGeneros
+                .FirstOrDefaultAsync(m => m.IdGenero == id);
+            if (catGenero == null)
             {
                 return NotFound();
             }
 
-            return View(CatEstatus);
+            return View(catGenero);
         }
 
-        // POST: CatEstatus/Delete/5
+        // POST: CatGeneroes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var CatEstatus = await _context.CatEstatus.FindAsync(id);
-            CatEstatus.IdEstatusRegistro = 2;
+            var catGenero = await _context.CatGeneros.FindAsync(id);
+            catGenero.IdEstatusRegistro = 2;
             _context.SaveChanges();
             await _context.SaveChangesAsync();
             _notyf.Error("Registro desactivado con éxito", 5);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CatEstatusExists(int id)
+        private bool CatGeneroExists(int id)
         {
-            return _context.CatEstatus.Any(e => e.IdEstatusRegistro == id);
+            return _context.CatGeneros.Any(e => e.IdGenero == id);
         }
     }
 }

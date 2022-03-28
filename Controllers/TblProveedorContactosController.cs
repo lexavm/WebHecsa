@@ -68,7 +68,21 @@ namespace WebHecsa.Controllers
                 ViewBag.EstatusFlag = 0;
                 _notyf.Information("Favor de registrar los Estatus para la Aplicación", 5);
             }
-            return View(await _context.TblProveedorContactos.ToListAsync());
+            var fTblProveedorContactos = from a in _context.TblProveedorContactos
+                                         join b in _context.CatPerfiles on a.IdPerfil equals b.IdPerfil
+                                         join c in _context.TblProveedores on a.IdProveedor equals c.IdProveedor
+                                         select new TblProveedorContacto
+                                         {
+                                             IdProveedorContacto = a.IdProveedorContacto,
+                                             NombreProveedorContacto = a.NombreProveedorContacto,
+                                             NombreProveedor = c.NombreProveedor,
+                                             PerfilDesc = b.PerfilDesc,
+                                             FechaRegistro = a.FechaRegistro,
+                                             IdEstatusRegistro = a.IdEstatusRegistro
+                                         };
+
+            return View(await fTblProveedorContactos.ToListAsync());
+            //return View(await _context.TblProveedorContactos.ToListAsync());
         }
 
         // GET: TblProveedorContactoes/Details/5

@@ -26,6 +26,7 @@ namespace WebHecsa.Models
         [Display(Name = "Giro Comercial")]
 
         public string GiroComercial { get; set; }
+        [Display(Name = "Empresa")]
         public Guid IdEmpresa { get; set; }
         [Column("Fecha Registro")]
         [DataType(DataType.Date)]

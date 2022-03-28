@@ -6,7 +6,7 @@
 }
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item">HECSA</li>
+        
         <li class="breadcrumb-item">Información</li>
         <li class="breadcrumb-item">Cliente</li>
         <li class="breadcrumb-item">Control Cliente</li>
@@ -21,11 +21,11 @@
         <tr>
           
             <th style="text-align:center">
-                @Html.DisplayNameFor(model => model.IdTipoDireccion)
+                @Html.DisplayNameFor(model => model.NombreCliente)
             </th>
 
             <th style="text-align:center">
-                @Html.DisplayNameFor(model => model.Telefono)
+                @Html.DisplayNameFor(model => model.TipoDireccionDesc)
             </th>
 
             <th style="text-align:center">
@@ -43,11 +43,11 @@
             <tr>
 
                 <td style="text-align:center">
-                    @Html.DisplayFor(modelItem => item.IdTipoDireccion)
+                    @Html.DisplayFor(modelItem => item.NombreCliente)
                 </td>
               
                 <td style="text-align:center">
-                    @Html.DisplayFor(modelItem => item.Telefono)
+                    @Html.DisplayFor(modelItem => item.TipoDireccionDesc)
                 </td>
       
                 <td style="text-align:center">
@@ -81,9 +81,10 @@
 
         $('#TblClienteDireccion').DataTable();
 
-            var vEstatusFlag = '@ViewBag.EstatusFlag'
+           var vEstatusFlag = '@ViewBag.EstatusFlag'
             var vEmpresaFlag = '@ViewBag.EmpresaFlag'
             var vClienteFlag = '@ViewBag.ClienteFlag'
+            var vTipoDireccionFlag = '@ViewBag.TipoDireccionFlag'
 
           if (vEstatusFlag == 0)
           {
@@ -103,7 +104,14 @@
                   }
                   else
                   {
-                  document.getElementById("iNuevo").style.visibility="visible";
+                      if (vTipoDireccionFlag == 0)
+                      {
+                      document.getElementById("iNuevo").style.visibility="hidden";
+                      }
+                      else
+                      {
+                      document.getElementById("iNuevo").style.visibility="visible";
+                      }
                   }
               }
           }

@@ -6,7 +6,7 @@
 }
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        
+
         <li class="breadcrumb-item">Información</li>
         <li class="breadcrumb-item">Proveedores</li>
         <li class="breadcrumb-item">Control Proveedores</li>
@@ -19,17 +19,14 @@
 <table class="table" id="tblProveedoresDirecciones">
     <thead>
         <tr>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.NombreProveedor)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.TipoDireccionDesc)
+            </th>
 
-            <th style="text-align:center">
-                @Html.DisplayNameFor(model => model.IdTipoDireccion)
-            </th>
-            <th style="text-align:center">
-                @Html.DisplayNameFor(model => model.CorreoElectronico)
-            </th>
-            <th style="text-align:center">
-                @Html.DisplayNameFor(model => model.Telefono)
-            </th>
-  
+
             <th style="text-align:center">
                 @Html.DisplayNameFor(model => model.FechaRegistro)
             </th>
@@ -43,16 +40,13 @@
         @foreach (var item in Model)
         {
             <tr>
-
                 <td style="text-align:center">
-                    @Html.DisplayFor(modelItem => item.IdTipoDireccion)
+                    @Html.DisplayFor(modelItem => item.NombreProveedor)
                 </td>
                 <td style="text-align:center">
-                    @Html.DisplayFor(modelItem => item.CorreoElectronico)
+                    @Html.DisplayFor(modelItem => item.TipoDireccionDesc)
                 </td>
-                <td style="text-align:center">
-                    @Html.DisplayFor(modelItem => item.Telefono)
-                </td>
+     
 
                 <td style="text-align:center">
                     @Html.DisplayFor(modelItem => item.FechaRegistro)

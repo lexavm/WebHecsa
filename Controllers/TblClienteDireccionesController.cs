@@ -40,6 +40,17 @@ namespace WebHecsa.Controllers
                     if (ValidaCliente.Count >= 1)
                     {
                         ViewBag.ClienteFlag = 1;
+                        var ValidaTipoDireccion = _context.CatTipoDirecciones.ToList();
+
+                        if (ValidaTipoDireccion.Count > 1)
+                        {
+                            ViewBag.TipoDireccionFlag = 1;
+                        }
+                        else
+                        {
+                            ViewBag.TipoDireccionFlag = 0;
+                            _notyf.Information("Favor de registrar los datos de la Tipo Dirección para la Aplicación", 5);
+                        }
                     }
                     else
                     {
@@ -58,7 +69,22 @@ namespace WebHecsa.Controllers
                 ViewBag.EstatusFlag = 0;
                 _notyf.Information("Favor de registrar los Estatus para la Aplicación", 5);
             }
-            return View(await _context.TblClienteDirecciones.ToListAsync());
+            var fTblClienteDirecciones = from a in _context.TblClienteDirecciones
+                                         join b in _context.CatTipoDirecciones on a.IdTipoDireccion equals b.IdTipoDireccion
+                                         join c in _context.TblClientes on a.IdCliente equals c.IdCliente
+                                         select new TblClienteDireccion
+                                         {
+                                             IdClienteDirecciones = a.IdClienteDirecciones,
+                                             NombreCliente = c.NombreCliente,
+                                             TipoDireccionDesc = b.TipoDireccionDesc,
+                                             CorreoElectronico = a.CorreoElectronico,
+                                             Telefono = a.Telefono,
+                                             FechaRegistro = a.FechaRegistro,
+                                             IdEstatusRegistro = a.IdEstatusRegistro
+                                         };
+
+            return View(await fTblClienteDirecciones.ToListAsync());
+            //return View(await _context.TblClienteDirecciones.ToListAsync());
         }
 
         // GET: TblClienteDirecciones/Details/5

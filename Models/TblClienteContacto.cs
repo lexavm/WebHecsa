@@ -13,7 +13,11 @@ namespace WebHecsa.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdClienteContacto { get; set; }
         [Display(Name = "Perfil")]
+        [Required(ErrorMessage = "Campo Requerido")]
         public int IdPerfil { get; set; }
+        [NotMapped]
+        [Display(Name = "Perfil")]
+        public string PerfilDesc { get; set; }
         [Display(Name = "Nombre Contacto")]
         [Required(ErrorMessage = "Campo Requerido")]
         public string NombreClienteContacto { get; set; }
@@ -27,6 +31,9 @@ namespace WebHecsa.Models
         [Display(Name = "Telefono Movil")]
         public string TelefonoMovil { get; set; }
         public Guid IdCliente { get; set; }
+        [NotMapped]
+        [Display(Name = "Nombre Cliente")]
+        public string NombreCliente { get; set; }
         [Column("Fecha Registro")]
         [DataType(DataType.Date)]
         public DateTime FechaRegistro { get; set; }

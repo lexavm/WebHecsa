@@ -68,7 +68,21 @@ namespace WebHecsa.Controllers
                 ViewBag.EstatusFlag = 0;
                 _notyf.Information("Favor de registrar los Estatus para la Aplicación", 5);
             }
-            return View(await _context.TblProveedorDirecciones.ToListAsync());
+            var fTblProveedorDireccion = from a in _context.TblProveedorDirecciones
+                                join b in _context.CatTipoDirecciones on a.IdTipoDireccion equals b.IdTipoDireccion
+                                join c in _context.TblProveedores on a.IdProveedor equals c.IdProveedor
+                                select new TblProveedorDireccion
+                                {
+                                    IdProveedorDirecciones = a.IdProveedorDirecciones,
+                                    NombreProveedor = c.NombreProveedor,
+                                    TipoDireccionDesc = b.TipoDireccionDesc,
+                                    CorreoElectronico = a.CorreoElectronico,
+                                    Telefono = a.Telefono,
+                                    FechaRegistro = a.FechaRegistro,
+                                    IdEstatusRegistro = a.IdEstatusRegistro
+                                };
+
+            return View(await fTblProveedorDireccion.ToListAsync());
         }
 
         // GET: TblProveedorDirecciones/Details/5
@@ -122,7 +136,7 @@ namespace WebHecsa.Controllers
                     var fTipoDireccion = (from c in _context.CatTipoDirecciones where c.IdTipoDireccion == tblProveedorDirecciones.IdTipoDireccion select c).Distinct().ToList();
                     tblProveedorDirecciones.FechaRegistro = DateTime.Now;
                     tblProveedorDirecciones.IdEstatusRegistro = 1;
-                   
+
                     var strColonia = _context.CatCodigosPostales.Where(s => s.IdAsentaCpcons == tblProveedorDirecciones.Colonia).FirstOrDefault();
                     tblProveedorDirecciones.IdColonia = !string.IsNullOrEmpty(tblProveedorDirecciones.Colonia) ? tblProveedorDirecciones.Colonia : tblProveedorDirecciones.Colonia;
                     tblProveedorDirecciones.Colonia = !string.IsNullOrEmpty(tblProveedorDirecciones.Colonia) ? strColonia.Dasenta.ToUpper() : tblProveedorDirecciones.Colonia;
@@ -196,7 +210,7 @@ namespace WebHecsa.Controllers
                     var fTipoDireccion = (from c in _context.CatTipoDirecciones where c.IdTipoDireccion == tblProveedorDirecciones.IdTipoDireccion select c).Distinct().ToList();
                     tblProveedorDirecciones.FechaRegistro = DateTime.Now;
                     tblProveedorDirecciones.IdEstatusRegistro = 1;
-                    
+
                     var strColonia = _context.CatCodigosPostales.Where(s => s.IdAsentaCpcons == tblProveedorDirecciones.Colonia).FirstOrDefault();
                     tblProveedorDirecciones.IdColonia = !string.IsNullOrEmpty(tblProveedorDirecciones.Colonia) ? tblProveedorDirecciones.Colonia : tblProveedorDirecciones.Colonia;
                     tblProveedorDirecciones.Colonia = !string.IsNullOrEmpty(tblProveedorDirecciones.Colonia) ? strColonia.Dasenta.ToUpper() : tblProveedorDirecciones.Colonia;

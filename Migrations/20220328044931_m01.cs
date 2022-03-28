@@ -218,7 +218,7 @@ namespace WebHecsa.Migrations
                     Rfc = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GiroComercial = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdEmpresa = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaRegistro = table.Column<DateTime>(name: "Fecha Registro", type: "datetime2", nullable: false),
                     IdEstatusRegistro = table.Column<int>(type: "int", nullable: false),
                     IdEmpresaNavigationIdEmpresa = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IdEmpresaNavigationIdEmpresaNavigationIdEmpresa = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
@@ -529,7 +529,7 @@ namespace WebHecsa.Migrations
                     IdProveedorDirecciones = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdTipoDireccion = table.Column<int>(type: "int", nullable: false),
-                    Calle = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Calle = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CodigoPostal = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdColonia = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Colonia = table.Column<string>(type: "nvarchar(max)", nullable: true),

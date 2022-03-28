@@ -15,9 +15,9 @@ namespace WebHecsa.Models
         [Display(Name = "Tipo Direccion")]
         [Required(ErrorMessage = "Campo Requerido")]
         public int IdTipoDireccion { get; set; }
-        [Display(Name = "Calle")]
-        [Required(ErrorMessage = "Campo Requerido")]
-
+        [Display(Name = "Tipo Direccion")]
+        [NotMapped]
+        public string TipoDireccionDesc { get; set; }
         public string Calle { get; set; }
         [Display(Name = "Codigo Postal")]
 
@@ -45,6 +45,9 @@ namespace WebHecsa.Models
         public string Telefono { get; set; }
         [Display(Name = "Proveedor")]
         public Guid IdProveedor { get; set; }
+        [NotMapped]
+        [Display(Name = "Nombre Proveedor")]
+        public string NombreProveedor { get; set; }
         [Column("Fecha Registro")]
         [DataType(DataType.Date)]
         public DateTime FechaRegistro { get; set; }

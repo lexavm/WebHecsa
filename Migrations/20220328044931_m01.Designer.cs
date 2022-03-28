@@ -10,7 +10,7 @@ using WebHecsa.Data;
 namespace WebHecsa.Migrations
 {
     [DbContext(typeof(nDbContext))]
-    [Migration("20220328041418_m01")]
+    [Migration("20220328044931_m01")]
     partial class m01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -425,7 +425,7 @@ namespace WebHecsa.Migrations
 
                     b.Property<DateTime>("FechaRegistro")
                         .HasColumnType("datetime2")
-                        .HasColumnName("FechaRegistro");
+                        .HasColumnName("Fecha Registro");
 
                     b.Property<string>("GiroComercial")
                         .HasColumnType("nvarchar(max)");
@@ -881,7 +881,6 @@ namespace WebHecsa.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Calle")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ciudad")

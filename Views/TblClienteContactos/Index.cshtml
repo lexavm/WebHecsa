@@ -6,7 +6,7 @@
 }
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item">HECSA</li>
+        
         <li class="breadcrumb-item">Información</li>
         <li class="breadcrumb-item">Cliente</li>
         <li class="breadcrumb-item">Control Cliente</li>
@@ -20,14 +20,16 @@
     <thead>
         <tr>
                   <th style="text-align:center">
-                @Html.DisplayNameFor(model => model.NombreClienteContacto)
+                @Html.DisplayNameFor(model => model.NombreCliente)
             </th>
-   
+
 
             <th style="text-align:center">
-                @Html.DisplayNameFor(model => model.Telefono)
+                @Html.DisplayNameFor(model => model.PerfilDesc)
             </th>
-    
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.NombreClienteContacto)
+            </th>
             <th style="text-align:center">
                 @Html.DisplayNameFor(model => model.FechaRegistro)
             </th>
@@ -40,35 +42,37 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+                <tr>
+                          <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.NombreCliente)
+                    </td>
+
+
+                    <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.PerfilDesc)
+                    </td>
                       <td style="text-align:center">
                     @Html.DisplayFor(modelItem => item.NombreClienteContacto)
-                </td>
-       
-              
-                <td style="text-align:center">
-                    @Html.DisplayFor(modelItem => item.Telefono)
-                </td>
-          
-                <td style="text-align:center">
+                    </td>
+                    <td style="text-align:center">
                     @Html.DisplayFor(modelItem => item.FechaRegistro)
-                </td>
-                <td style="text-align:center">
+                    </td>
+                    <td style="text-align:center">
                     @if (item.IdEstatusRegistro == 1)
                     {
-                        <i class="fas fa-check" style="font-size: 1em; color: green;"></i>
+                                <i class="fas fa-check" style="font-size: 1em; color: green;"></i>
                     }
                     else
                     {
-                        <i class="fas fa-stop-circle" style="font-size: 1em; color: red;"></i>
+                                <i class="fas fa-stop-circle" style="font-size: 1em; color: red;"></i>
                     }
-                </td>
-                <td style="text-align:center">
-                    <a asp-action="Edit" asp-route-id="@item.IdClienteContacto" class="btn btn-outline-secondary" title="Editar"><i class="far fa-edit" style="font-size: 1em; color: #FFC300;"></i></a>
-                    <a asp-action="Details" asp-route-id="@item.IdClienteContacto" class="btn btn-outline-secondary" title="Detalles"><i class="far fa-list-alt" style="font-size: 1em; color: #67C5C4 ;"></i></a>
-                    <a asp-action="Delete" asp-route-id="@item.IdClienteContacto" class="btn btn-outline-secondary" title="Desactivar"><i class="far fa-stop-circle" style="font-size: 1em; color: #FF9333;"></i></a>
-                </td>
-            </tr>
+                    </td>
+                    <td style="text-align:center">
+                        <a asp-action="Edit" asp-route-id="@item.IdClienteContacto" class="btn btn-outline-secondary" title="Editar"><i class="far fa-edit" style="font-size: 1em; color: #FFC300;"></i></a>
+                        <a asp-action="Details" asp-route-id="@item.IdClienteContacto" class="btn btn-outline-secondary" title="Detalles"><i class="far fa-list-alt" style="font-size: 1em; color: #67C5C4 ;"></i></a>
+                        <a asp-action="Delete" asp-route-id="@item.IdClienteContacto" class="btn btn-outline-secondary" title="Desactivar"><i class="far fa-stop-circle" style="font-size: 1em; color: #FF9333;"></i></a>
+                    </td>
+                </tr>
         }
     </tbody>
 </table>
@@ -79,34 +83,42 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        $('#TblClienteDireccion').DataTable();
+        $('#tblClienteContacto').DataTable();
 
             var vEstatusFlag = '@ViewBag.EstatusFlag'
-            var vEmpresaFlag = '@ViewBag.EmpresaFlag'
-            var vClienteFlag = '@ViewBag.ClienteFlag'
+           var vEmpresaFlag = '@ViewBag.EmpresaFlag'
+           var vClienteFlag = '@ViewBag.ClienteFlag'
+           var vPerfilFlag = '@ViewBag.PerfilFlag'
 
-          if (vEstatusFlag == 0)
-          {
-          document.getElementById("iNuevo").style.visibility="hidden";
-          }
-          else
-          {
-              if (vEmpresaFlag == 0)
-              {
-              document.getElementById("iNuevo").style.visibility="hidden";
-              }
-              else
-              {
-                  if (vClienteFlag == 0)
-                  {
-                  document.getElementById("iNuevo").style.visibility="hidden";
-                  }
-                  else
-                  {
-                  document.getElementById("iNuevo").style.visibility="visible";
-                  }
-              }
-          }
+         if (vEstatusFlag == 0)
+         {
+         document.getElementById("iNuevo").style.visibility="hidden";
+         }
+         else
+         {
+             if (vEmpresaFlag == 0)
+             {
+             document.getElementById("iNuevo").style.visibility="hidden";
+             }
+             else
+             {
+                 if (vClienteFlag == 0)
+                 {
+                 document.getElementById("iNuevo").style.visibility="hidden";
+                 }
+                 else
+                 {
+                     if (vPerfilFlag == 0)
+                     {
+                     document.getElementById("iNuevo").style.visibility="hidden";
+                     }
+                     else
+                     {
+                     document.getElementById("iNuevo").style.visibility="visible";
+                     }
+                 }
+             }
+         }
         });
 
 </script>

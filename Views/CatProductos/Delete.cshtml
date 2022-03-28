@@ -1,15 +1,21 @@
 ﻿@model WebHecsa.Models.CatProducto
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Desactivar Producto";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Details</h1>
-
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        
+        <li class="breadcrumb-item">Información</li>
+        <li class="breadcrumb-item">Catálogos</li>
+        <li class="breadcrumb-item">Producto</li>
+        <li class="breadcrumb-item">Control de Producto</li>
+        <li class="breadcrumb-item active" aria-current="page">Desactivar Producto</li>
+    </ol>
+</nav>
+<hr />
 <div>
-    <h4>CatProducto</h4>
-    <hr />
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CodigoInterno)
@@ -24,16 +30,16 @@
             @Html.DisplayFor(model => model.CodigoExterno)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdMarca)
+            @Html.DisplayNameFor(model => model.MarcaDesc)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdMarca)
+            @Html.DisplayFor(model => model.MarcaDesc)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdCategoria)
+            @Html.DisplayNameFor(model => model.CategoriaDesc)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdCategoria)
+            @Html.DisplayFor(model => model.CategoriaDesc)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.DescProducto)
@@ -47,24 +53,7 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CantidadMinima)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cantidad)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cantidad)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ProductoPrecioUno)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ProductoPrecioUno)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PorcentajePrecioUno)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PorcentajePrecioUno)
-        </dd>
+
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.SubCosto)
         </dt>
@@ -89,15 +78,11 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.IdEstatusRegistro)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdCategoriaNavigationIdCategoria)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdCategoriaNavigationIdCategoria)
-        </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.IdProducto">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    
+    <form asp-action="Delete">
+        <input style="text-transform:uppercase" type="hidden" asp-for="IdProducto" />
+        <input style="text-transform:uppercase" type="submit" value="Desactivar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Regresar</a>
+    </form>
 </div>

@@ -37,7 +37,7 @@ namespace WebHecsa.Models
         public string CategoriaDesc { get; set; }
         [Display(Name = "Descripcion Producto")]
         public string DescProducto { get; set; }
-        [Display(Name = "Cantidad Minima")]
+        [Display(Name = "Minima")]
         public int CantidadMinima { get; set; }
         [Display(Name = "Cantidad")]
         public int Cantidad { get; set; }

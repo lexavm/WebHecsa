@@ -7,9 +7,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebHecsa.Models
 {
-    public partial class CatPerfile
+    public partial class CatPerfil
     {
-        public CatPerfile()
+        public CatPerfil()
         {
             TblUsuarios = new HashSet<TblUsuario>();
         }

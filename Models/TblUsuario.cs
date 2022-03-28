@@ -33,7 +33,7 @@ namespace WebHecsa.Models
 
         public virtual CatArea IdAreaNavigationIdAreaNavigation { get; set; }
         public virtual CatGenero IdGeneroNavigationIdGeneroNavigation { get; set; }
-        public virtual CatPerfile IdPerfilNavigationIdPerfilNavigation { get; set; }
+        public virtual CatPerfil IdPerfilNavigationIdPerfilNavigation { get; set; }
         public virtual CatRole IdRolNavigationIdRolNavigation { get; set; }
     }
 }

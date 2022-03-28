@@ -1,7 +1,8 @@
-﻿@model WebHecsa.Models.CatGenero
+﻿@model WebHecsa.Models.CatArea
+
 
 @{
-    ViewData["Title"] = "Editar Género";
+    ViewData["Title"] = "Editar Área";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <nav aria-label="breadcrumb">
@@ -9,9 +10,9 @@
 
         <li class="breadcrumb-item">Información</li>
         <li class="breadcrumb-item">Catálogos</li>
-        <li class="breadcrumb-item">Género</li>
-        <li class="breadcrumb-item">Control de Género</li>
-        <li class="breadcrumb-item active" aria-current="page">Editar Género</li>
+        <li class="breadcrumb-item">Área</li>
+        <li class="breadcrumb-item">Control de Estatus</li>
+        <li class="breadcrumb-item active" aria-current="page">Editar Área</li>
     </ol>
 </nav>
 <hr />
@@ -19,22 +20,22 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input style="text-transform:uppercase" type="hidden" asp-for="IdGenero" id="IdEstatus" />
+            <input style="text-transform:uppercase" type="hidden" asp-for="IdArea" id="IdEstatus" />
             <div class="form-group">
-                <label asp-for="GeneroDesc" class="control-label"></label>
-                <input style="text-transform:uppercase" asp-for="GeneroDesc" class="form-control" />
-                <span asp-validation-for="GeneroDesc" class="text-danger"></span>
+                <label asp-for="AreaDesc" class="control-label"></label>
+                <input style="text-transform:uppercase" asp-for="AreaDesc" class="form-control" />
+                <span asp-validation-for="AreaDesc" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IdEstatusRegistro" class="control-label"></label>
                 <select id="idEstatusLista" class="form-select" asp-for="IdEstatusRegistro" asp-items="@(new SelectList(ViewBag.ListaCatEstatus,"IdEstatusRegistro","EstatusDesc"))">
-                    <option value="">SELECCIONAR</option>
+                    <option value="">Seleccionar Estatus</option>
                 </select>
                 <span asp-validation-for="IdEstatusRegistro" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
-                <input  type="submit" value="Actualizar" class="btn btn-warning" />
+                <input type="submit" value="Actualizar" class="btn btn-warning" />
                 <a asp-action="Index" class="btn btn-secondary">Regresar</a>
             </div>
         </form>

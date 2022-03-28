@@ -1,7 +1,7 @@
-﻿@model WebHecsa.Models.CatGenero
+﻿@model WebHecsa.Models.CatArea
 
 @{
-    ViewData["Title"] = "Crear Estatus";
+    ViewData["Title"] = "Crear Área";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <nav aria-label="breadcrumb">
@@ -9,9 +9,9 @@
 
         <li class="breadcrumb-item">Información</li>
         <li class="breadcrumb-item">Catálogos</li>
-        <li class="breadcrumb-item">Género</li>
-        <li class="breadcrumb-item">Control de Género</li>
-        <li class="breadcrumb-item active" aria-current="page">Crear Género</li>
+        <li class="breadcrumb-item">Área</li>
+        <li class="breadcrumb-item">Control de Área</li>
+        <li class="breadcrumb-item active" aria-current="page">Crear Área</li>
     </ol>
 </nav>
 <hr />
@@ -20,13 +20,13 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="GeneroDesc" class="control-label"></label>
-                <input style="text-transform:uppercase"  asp-for="GeneroDesc" class="form-control" />
-                <span asp-validation-for="GeneroDesc" class="text-danger"></span>
+                <label asp-for="AreaDesc" class="control-label"></label>
+                <input style="text-transform:uppercase" asp-for="AreaDesc" class="form-control" />
+                <span asp-validation-for="AreaDesc" class="text-danger"></span>
             </div>
             <br>
             <div class="form-group">
-                <input style="text-transform:uppercase"  type="submit" value="Crear" class="btn btn-success" />
+                <input style="text-transform:uppercase" type="submit" value="Crear" class="btn btn-success" />
                 <a asp-action="Index" class="btn btn-secondary">Regresar</a>
             </div>
         </form>
@@ -36,4 +36,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-

@@ -1,7 +1,7 @@
-﻿@model WebHecsa.Models.CatDivisa
+﻿@model WebHecsa.Models.CatArea
 
 @{
-    ViewData["Title"] = "Detalles Divisa";
+    ViewData["Title"] = "Detalles Área";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <nav aria-label="breadcrumb">
@@ -9,19 +9,19 @@
 
         <li class="breadcrumb-item">Información</li>
         <li class="breadcrumb-item">Catálogos</li>
-        <li class="breadcrumb-item">Divisa</li>
-        <li class="breadcrumb-item">Control de Divisa</li>
-        <li class="breadcrumb-item active" aria-current="page">Detalles Divisa</li>
+        <li class="breadcrumb-item">Área</li>
+        <li class="breadcrumb-item">Control de Área</li>
+        <li class="breadcrumb-item active" aria-current="page">Detalles Área</li>
     </ol>
 </nav>
 <hr />
 <div>
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DivisaDesc)
+            @Html.DisplayNameFor(model => model.AreaDesc)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DivisaDesc)
+            @Html.DisplayFor(model => model.AreaDesc)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.FechaRegistro)
@@ -40,4 +40,3 @@
         <a asp-action="Index" class="btn btn-info">Regresar</a>
     </div>
 </div>
-

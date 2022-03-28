@@ -23,7 +23,11 @@ namespace WebHecsa.Models
         public decimal PorcentajePrecioUno { get; set; }
         public decimal SubCosto { get; set; }
         public decimal Costo { get; set; }
+        [Column("FechaRegistro")]
+        [DataType(DataType.Date)]
+        [Display(Name = "Fecha Registro")]
         public DateTime FechaRegistro { get; set; }
+        [Display(Name = "Estatus")]
         public int IdEstatusRegistro { get; set; }
         public int? IdCategoriaNavigationIdCategoria { get; set; }
 

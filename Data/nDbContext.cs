@@ -25,7 +25,7 @@ namespace WebHecsa.Data
         public virtual DbSet<CatEstatus> CatEstatus { get; set; }
         public virtual DbSet<CatGenero> CatGeneros { get; set; }
         public virtual DbSet<CatMarca> CatMarcas { get; set; }
-        public virtual DbSet<CatPerfile> CatPerfiles { get; set; }
+        public virtual DbSet<CatPerfil> CatPerfiles { get; set; }
         public virtual DbSet<CatProducto> CatProductos { get; set; }
         public virtual DbSet<CatRole> CatRoles { get; set; }
         public virtual DbSet<CatTipoDireccion> CatTipoDireccions { get; set; }

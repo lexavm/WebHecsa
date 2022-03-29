@@ -34,7 +34,7 @@ namespace WebHecsa.Data
         public virtual DbSet<TblCliente> TblClientes { get; set; }
         public virtual DbSet<TblClienteContacto> TblClienteContactos { get; set; }
         public virtual DbSet<TblClienteDireccion> TblClienteDirecciones { get; set; }
-        public virtual DbSet<TblCotizacionGeneral> TblCotizacionGenerals { get; set; }
+        public virtual DbSet<TblCotizacionGeneral> TblCotizacionGenerales { get; set; }
         public virtual DbSet<TblEmpresa> TblEmpresas { get; set; }
         public virtual DbSet<TblEmpresaFiscal> TblEmpresaFiscales { get; set; }
         public virtual DbSet<TblProveedor> TblProveedores { get; set; }
@@ -55,5 +55,8 @@ namespace WebHecsa.Data
 
   
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+  
+        public DbSet<WebHecsa.Models.CatEstatusCotizacion> CatEstatusCotizacion { get; set; }
     }
 }

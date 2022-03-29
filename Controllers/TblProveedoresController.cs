@@ -1,11 +1,10 @@
-﻿using System;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AspNetCoreHero.ToastNotification.Abstractions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using WebHecsa.Data;
 using WebHecsa.Models;
 
@@ -96,7 +95,7 @@ namespace WebAdminHecsa.Controllers
                     tblProveedor.Rfc = !string.IsNullOrEmpty(tblProveedor.Rfc) ? tblProveedor.Rfc.ToUpper() : tblProveedor.Rfc;
                     tblProveedor.IdEstatusRegistro = 1;
                     tblProveedor.IdEmpresa = idEmpresa.IdEmpresa;
-                    
+
                     _context.SaveChanges();
                     _context.Add(tblProveedor);
                     await _context.SaveChangesAsync();
@@ -153,7 +152,7 @@ namespace WebAdminHecsa.Controllers
                     tblProveedor.Rfc = !string.IsNullOrEmpty(tblProveedor.Rfc) ? tblProveedor.Rfc.ToUpper() : tblProveedor.Rfc;
                     tblProveedor.IdEstatusRegistro = 1;
                     tblProveedor.IdEmpresa = idEmpresa.IdEmpresa;
-                    
+
                     _context.Update(tblProveedor);
                     await _context.SaveChangesAsync();
                     _notyf.Warning("Registro actualizado con éxito", 5);

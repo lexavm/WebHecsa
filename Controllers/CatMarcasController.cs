@@ -174,7 +174,6 @@ namespace WebHecsa.Controllers
             {
                 try
                 {
-
                     var fProveedor = (from c in _context.TblProveedores where c.IdProveedor == catMarca.IdProveedor select c).Distinct().ToList();
                     catMarca.FechaRegistro = DateTime.Now;
                     catMarca.IdEstatusRegistro = 1;

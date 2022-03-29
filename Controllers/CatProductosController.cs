@@ -1,11 +1,10 @@
-﻿using System;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AspNetCoreHero.ToastNotification.Abstractions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using WebHecsa.Data;
 using WebHecsa.Models;
 
@@ -279,6 +278,7 @@ namespace WebAdminHecsa.Controllers
         {
             return _context.CatProductos.Any(e => e.IdProducto == id);
         }
+
         private string GeneraCodigoInterno()
         {
             string fmt = "00000000.##";
@@ -299,6 +299,5 @@ namespace WebAdminHecsa.Controllers
 
             return strCodigoInterno;
         }
-
     }
 }

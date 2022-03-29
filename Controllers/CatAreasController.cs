@@ -1,11 +1,10 @@
-﻿using System;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AspNetCoreHero.ToastNotification.Abstractions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using WebHecsa.Data;
 using WebHecsa.Models;
 
@@ -15,6 +14,7 @@ namespace WebHecsa.Controllers
     {
         private readonly nDbContext _context;
         private readonly INotyfService _notyf;
+
         public CatAreasController(nDbContext context, INotyfService notyf)
         {
             _context = context;

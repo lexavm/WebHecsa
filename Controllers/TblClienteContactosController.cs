@@ -1,11 +1,10 @@
-﻿using System;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AspNetCoreHero.ToastNotification.Abstractions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using WebHecsa.Data;
 using WebHecsa.Models;
 
@@ -15,6 +14,7 @@ namespace WebHecsa.Controllers
     {
         private readonly nDbContext _context;
         private readonly INotyfService _notyf;
+
         public TblClienteContactosController(nDbContext context, INotyfService notyf)
         {
             _context = context;
@@ -69,17 +69,17 @@ namespace WebHecsa.Controllers
                 _notyf.Information("Favor de registrar los Estatus para la Aplicación", 5);
             }
             var fTblClienteContacto = from a in _context.TblClienteContactos
-                                         join b in _context.CatPerfiles on a.IdPerfil equals b.IdPerfil
-                                         join c in _context.TblClientes on a.IdCliente equals c.IdCliente
-                                         select new TblClienteContacto
-                                         {
-                                             IdClienteContacto = a.IdClienteContacto,
-                                             NombreCliente = c.NombreCliente,
-                                             NombreClienteContacto = a.NombreClienteContacto,
-                                             PerfilDesc = b.PerfilDesc,
-                                             FechaRegistro = a.FechaRegistro,
-                                             IdEstatusRegistro = a.IdEstatusRegistro
-                                         };
+                                      join b in _context.CatPerfiles on a.IdPerfil equals b.IdPerfil
+                                      join c in _context.TblClientes on a.IdCliente equals c.IdCliente
+                                      select new TblClienteContacto
+                                      {
+                                          IdClienteContacto = a.IdClienteContacto,
+                                          NombreCliente = c.NombreCliente,
+                                          NombreClienteContacto = a.NombreClienteContacto,
+                                          PerfilDesc = b.PerfilDesc,
+                                          FechaRegistro = a.FechaRegistro,
+                                          IdEstatusRegistro = a.IdEstatusRegistro
+                                      };
 
             return View(await fTblClienteContacto.ToListAsync());
             //return View(await _context.TblClienteDirecciones.ToListAsync());
@@ -137,7 +137,6 @@ namespace WebHecsa.Controllers
                     tblClienteContacto.NombreClienteContacto = tblClienteContacto.NombreClienteContacto.ToString().ToUpper();
                     tblClienteContacto.FechaRegistro = DateTime.Now;
                     tblClienteContacto.IdEstatusRegistro = 1;
-           
 
                     _context.SaveChanges();
                     _context.Add(tblClienteContacto);
@@ -203,7 +202,7 @@ namespace WebHecsa.Controllers
                     tblClienteContacto.NombreClienteContacto = tblClienteContacto.NombreClienteContacto.ToString().ToUpper();
                     tblClienteContacto.FechaRegistro = DateTime.Now;
                     tblClienteContacto.IdEstatusRegistro = 1;
-               
+
                     _context.Update(tblClienteContacto);
                     await _context.SaveChangesAsync();
                     _notyf.Warning("Registro actualizado con éxito", 5);

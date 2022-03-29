@@ -10,18 +10,18 @@ using WebHecsa.Models;
 
 namespace WebHecsa.Controllers
 {
-    public class CatEstatusController : Controller
+    public class CatEstatusCotizacionsController : Controller
     {
         private readonly nDbContext _context;
         private readonly INotyfService _notyf;
 
-        public CatEstatusController(nDbContext context, INotyfService notyf)
+        public CatEstatusCotizacionsController(nDbContext context, INotyfService notyf)
         {
             _context = context;
             _notyf = notyf;
         }
 
-        // GET: CatEstatus
+        // GET: CatEstatusCotizacions
         public async Task<IActionResult> Index()
         {
             var ValidaEstatus = _context.CatEstatus.ToList();
@@ -35,10 +35,10 @@ namespace WebHecsa.Controllers
                 ViewBag.EstatusFlag = 0;
                 _notyf.Information("Favor de registrar los Estatus para la Aplicación", 5);
             }
-            return View(await _context.CatEstatus.ToListAsync());
+            return View(await _context.CatEstatusCotizacion.ToListAsync());
         }
 
-        // GET: CatEstatus/Details/5
+        // GET: CatEstatusCotizacions/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -46,43 +46,43 @@ namespace WebHecsa.Controllers
                 return NotFound();
             }
 
-            var CatEstatus = await _context.CatEstatus
-                .FirstOrDefaultAsync(m => m.IdEstatusRegistro == id);
-            if (CatEstatus == null)
+            var catEstatusCotizacion = await _context.CatEstatusCotizacion
+                .FirstOrDefaultAsync(m => m.IdEstatusCotizacion == id);
+            if (catEstatusCotizacion == null)
             {
                 return NotFound();
             }
 
-            return View(CatEstatus);
+            return View(catEstatusCotizacion);
         }
 
-        // GET: CatEstatus/Create
+        // GET: CatEstatusCotizacions/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: CatEstatus/Create
+        // POST: CatEstatusCotizacions/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdEstatus,EstatusDesc")] CatEstatus CatEstatus)
+        public async Task<IActionResult> Create([Bind("IdEstatusCotizacion,EstatusDesc")] CatEstatusCotizacion catEstatusCotizacion)
         {
             if (ModelState.IsValid)
             {
-                var vDuplicados = _context.CatEstatus
-                       .Where(s => s.EstatusDesc == CatEstatus.EstatusDesc)
+                var vDuplicados = _context.CatEstatusCotizacion
+                       .Where(s => s.EstatusDesc == catEstatusCotizacion.EstatusDesc)
                        .ToList();
 
                 if (vDuplicados.Count == 0)
                 {
-                    CatEstatus.FechaRegistro = DateTime.Now;
-                    CatEstatus.EstatusDesc = CatEstatus.EstatusDesc.ToString().ToUpper();
-
+                    catEstatusCotizacion.FechaRegistro = DateTime.Now;
+                    catEstatusCotizacion.EstatusDesc = catEstatusCotizacion.EstatusDesc.ToString().ToUpper();
+                    catEstatusCotizacion.IdEstatusRegistro = 1;
                     _context.SaveChanges();
 
-                    _context.Add(CatEstatus);
+                    _context.Add(catEstatusCotizacion);
                     await _context.SaveChangesAsync();
                     _notyf.Success("Registro creado con éxito", 5);
                 }
@@ -93,11 +93,10 @@ namespace WebHecsa.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-
-            return View(CatEstatus);
+            return View(catEstatusCotizacion);
         }
 
-        // GET: CatEstatus/Edit/5
+        // GET: CatEstatusCotizacions/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             List<CatEstatus> ListaCatEstatus = new List<CatEstatus>();
@@ -109,22 +108,22 @@ namespace WebHecsa.Controllers
                 return NotFound();
             }
 
-            var CatEstatus = await _context.CatEstatus.FindAsync(id);
-            if (CatEstatus == null)
+            var catEstatusCotizacion = await _context.CatEstatusCotizacion.FindAsync(id);
+            if (catEstatusCotizacion == null)
             {
                 return NotFound();
             }
-            return View(CatEstatus);
+            return View(catEstatusCotizacion);
         }
 
-        // POST: CatEstatus/Edit/5
+        // POST: CatEstatusCotizacions/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdEstatus,EstatusDesc,FechaRegistro,IdEstatusRegistro")] CatEstatus CatEstatus)
+        public async Task<IActionResult> Edit(int id, [Bind("IdEstatusCotizacion,EstatusDesc")] CatEstatusCotizacion catEstatusCotizacion)
         {
-            if (id != CatEstatus.IdEstatusRegistro)
+            if (id != catEstatusCotizacion.IdEstatusCotizacion)
             {
                 return NotFound();
             }
@@ -133,17 +132,17 @@ namespace WebHecsa.Controllers
             {
                 try
                 {
-                    CatEstatus.FechaRegistro = DateTime.Now;
-                    CatEstatus.EstatusDesc = CatEstatus.EstatusDesc.ToString().ToUpper();
-                    CatEstatus.IdEstatusRegistro = CatEstatus.IdEstatusRegistro;
+                    catEstatusCotizacion.FechaRegistro = DateTime.Now;
+                    catEstatusCotizacion.EstatusDesc = catEstatusCotizacion.EstatusDesc.ToString().ToUpper();
+                    catEstatusCotizacion.IdEstatusRegistro = catEstatusCotizacion.IdEstatusRegistro;
                     _context.SaveChanges();
-                    _context.Update(CatEstatus);
+                    _context.Update(catEstatusCotizacion);
                     await _context.SaveChangesAsync();
                     _notyf.Warning("Registro actualizado con éxito", 5);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CatEstatusExists(CatEstatus.IdEstatusRegistro))
+                    if (!CatEstatusCotizacionExists(catEstatusCotizacion.IdEstatusCotizacion))
                     {
                         return NotFound();
                     }
@@ -154,10 +153,10 @@ namespace WebHecsa.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(CatEstatus);
+            return View(catEstatusCotizacion);
         }
 
-        // GET: CatEstatus/Delete/5
+        // GET: CatEstatusCotizacions/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -165,32 +164,32 @@ namespace WebHecsa.Controllers
                 return NotFound();
             }
 
-            var CatEstatus = await _context.CatEstatus
-                .FirstOrDefaultAsync(m => m.IdEstatusRegistro == id);
-            if (CatEstatus == null)
+            var catEstatusCotizacion = await _context.CatEstatusCotizacion
+                .FirstOrDefaultAsync(m => m.IdEstatusCotizacion == id);
+            if (catEstatusCotizacion == null)
             {
                 return NotFound();
             }
 
-            return View(CatEstatus);
+            return View(catEstatusCotizacion);
         }
 
-        // POST: CatEstatus/Delete/5
+        // POST: CatEstatusCotizacions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var CatEstatus = await _context.CatEstatus.FindAsync(id);
-            CatEstatus.IdEstatusRegistro = 2;
+            var catEstatusCotizacion = await _context.CatEstatusCotizacion.FindAsync(id);
+            catEstatusCotizacion.IdEstatusRegistro = 2;
             _context.SaveChanges();
             await _context.SaveChangesAsync();
             _notyf.Error("Registro desactivado con éxito", 5);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CatEstatusExists(int id)
+        private bool CatEstatusCotizacionExists(int id)
         {
-            return _context.CatEstatus.Any(e => e.IdEstatusRegistro == id);
+            return _context.CatEstatusCotizacion.Any(e => e.IdEstatusCotizacion == id);
         }
     }
 }

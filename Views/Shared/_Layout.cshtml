@@ -10,7 +10,10 @@
     <link href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/lib/fontawesome-free-5.15.4-web/css/all.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Plantilla/css/styles.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css")" rel="stylesheet" type="text/css" />
+    @*<link href="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css")" rel="stylesheet" type="text/css" />*@
+    
+    <link href="@Url.Content("https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css")" rel="stylesheet" type="text/css" />
 </head>
 <body class="sb-nav-fixed">
@@ -63,6 +66,8 @@
                                 <a class="nav-link" asp-area="" asp-controller="CatDivisas" asp-action="Index">Divisas</a>
                                 <a class="nav-link" asp-area="" asp-controller="CatTipoDireccions" asp-action="Index">Tipos Direcciones</a>
                                 <a class="nav-link" asp-area="" asp-controller="CatTipoEnvios" asp-action="Index">Tipos Envíos</a>
+                                <a class="nav-link" asp-area="" asp-controller="CatEstatusCotizacions" asp-action="Index">Estatus Cotizacion</a>
+                                
                             </nav>
                         </div>
                         <div class="sb-sidenav-menu-heading">Datos Complementarios</div>
@@ -172,7 +177,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="@Url.Content("~/lib/jquery/dist/jquery.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Plantilla/js/scripts.js")"></script>
-    <script type="text/javascript" src="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js")"></script>
+    @*<script type="text/javascript" src="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js")"></script>*@
+    <script type="text/javascript" src="@Url.Content("https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js")"></script>
      <script src="~/js/site.js" asp-append-version="true"></script>
     

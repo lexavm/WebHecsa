@@ -48,6 +48,7 @@ namespace WebHecsa.Controllers
             }
             return View(await _context.TblEmpresaFiscales.ToListAsync());
         }
+
         [HttpGet]
         public ActionResult FiltroEmpresaFiscales(Guid id)
         {
@@ -57,6 +58,7 @@ namespace WebHecsa.Controllers
 
             return Json(fEmpresaFiscales);
         }
+
         // GET: TblEmpresaFiscales/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
@@ -96,7 +98,6 @@ namespace WebHecsa.Controllers
 
                 if (DuplicadosEstatus.Count == 0)
                 {
-
                     var idEmpresa = _context.TblEmpresas.FirstOrDefault();
                     tblEmpresaFiscales.FechaRegistro = DateTime.Now;
                     tblEmpresaFiscales.NombreFiscal = tblEmpresaFiscales.NombreFiscal.ToString().ToUpper();
@@ -125,6 +126,7 @@ namespace WebHecsa.Controllers
             }
             return View(tblEmpresaFiscales);
         }
+
         // GET: TblEmpresaFiscales/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {

@@ -1,11 +1,10 @@
-﻿using System;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AspNetCoreHero.ToastNotification.Abstractions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using WebHecsa.Data;
 using WebHecsa.Models;
 
@@ -15,6 +14,7 @@ namespace WebHecsa.Controllers
     {
         private readonly nDbContext _context;
         private readonly INotyfService _notyf;
+
         public TblClientesController(nDbContext context, INotyfService notyf)
         {
             _context = context;
@@ -48,6 +48,7 @@ namespace WebHecsa.Controllers
             }
             return View(await _context.TblClientes.ToListAsync());
         }
+
         [HttpGet]
         public ActionResult FiltroCliente(Guid id)
         {
@@ -59,12 +60,11 @@ namespace WebHecsa.Controllers
                                 IdCliente = tC.IdCliente,
                                 NombreCliente = tC.NombreCliente,
                                 DireccionCliente = tCd.Calle + "," + tCd.CodigoPostal + "," + tCd.Colonia + "," + tCd.Ciudad + "," + tCd.Estado + "," + tCd.CorreoElectronico + "," + tCd.Telefono
-
                             }).Distinct().ToList();
-
 
             return Json(fCliente);
         }
+
         // GET: TblClientes/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
@@ -168,7 +168,6 @@ namespace WebHecsa.Controllers
                     tblCliente.GiroComercial = !string.IsNullOrEmpty(tblCliente.GiroComercial) ? tblCliente.GiroComercial.ToUpper() : tblCliente.GiroComercial;
                     tblCliente.Rfc = !string.IsNullOrEmpty(tblCliente.Rfc) ? tblCliente.Rfc.ToUpper() : tblCliente.Rfc;
                     tblCliente.IdEmpresa = vEmpresa[0].IdEmpresa;
-                    
 
                     _context.Update(tblCliente);
                     await _context.SaveChangesAsync();

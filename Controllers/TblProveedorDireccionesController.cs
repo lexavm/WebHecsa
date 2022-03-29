@@ -69,18 +69,18 @@ namespace WebHecsa.Controllers
                 _notyf.Information("Favor de registrar los Estatus para la Aplicación", 5);
             }
             var fTblProveedorDireccion = from a in _context.TblProveedorDirecciones
-                                join b in _context.CatTipoDirecciones on a.IdTipoDireccion equals b.IdTipoDireccion
-                                join c in _context.TblProveedores on a.IdProveedor equals c.IdProveedor
-                                select new TblProveedorDireccion
-                                {
-                                    IdProveedorDirecciones = a.IdProveedorDirecciones,
-                                    NombreProveedor = c.NombreProveedor,
-                                    TipoDireccionDesc = b.TipoDireccionDesc,
-                                    CorreoElectronico = a.CorreoElectronico,
-                                    Telefono = a.Telefono,
-                                    FechaRegistro = a.FechaRegistro,
-                                    IdEstatusRegistro = a.IdEstatusRegistro
-                                };
+                                         join b in _context.CatTipoDirecciones on a.IdTipoDireccion equals b.IdTipoDireccion
+                                         join c in _context.TblProveedores on a.IdProveedor equals c.IdProveedor
+                                         select new TblProveedorDireccion
+                                         {
+                                             IdProveedorDirecciones = a.IdProveedorDirecciones,
+                                             NombreProveedor = c.NombreProveedor,
+                                             TipoDireccionDesc = b.TipoDireccionDesc,
+                                             CorreoElectronico = a.CorreoElectronico,
+                                             Telefono = a.Telefono,
+                                             FechaRegistro = a.FechaRegistro,
+                                             IdEstatusRegistro = a.IdEstatusRegistro
+                                         };
 
             return View(await fTblProveedorDireccion.ToListAsync());
         }

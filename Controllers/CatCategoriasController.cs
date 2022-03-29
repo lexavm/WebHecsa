@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AspNetCoreHero.ToastNotification.Abstractions;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using WebHecsa.Data;
 using WebHecsa.Models;
 
@@ -126,7 +126,6 @@ namespace WebAdminHecsa.Controllers
 
                 if (DuplicadosEstatus.Count == 0)
                 {
-
                     //var fMarca = (from c in _context.CatMarca where c.IdMarca == catCategoria.IdMarca select c).Distinct().ToList();
                     catCategoria.FechaRegistro = DateTime.Now;
                     catCategoria.IdEstatusRegistro = 1;

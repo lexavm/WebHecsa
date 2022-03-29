@@ -1,11 +1,10 @@
-﻿using System;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AspNetCoreHero.ToastNotification.Abstractions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using WebHecsa.Data;
 using WebHecsa.Models;
 
@@ -138,7 +137,7 @@ namespace WebHecsa.Controllers
                     var fTipoDireccion = (from c in _context.CatTipoDirecciones where c.IdTipoDireccion == tblClienteDirecciones.IdTipoDireccion select c).Distinct().ToList();
                     tblClienteDirecciones.FechaRegistro = DateTime.Now;
                     tblClienteDirecciones.IdEstatusRegistro = 1;
-         
+
                     var strColonia = _context.CatCodigosPostales.Where(s => s.IdAsentaCpcons == tblClienteDirecciones.Colonia).FirstOrDefault();
                     tblClienteDirecciones.IdColonia = !string.IsNullOrEmpty(tblClienteDirecciones.Colonia) ? tblClienteDirecciones.Colonia : tblClienteDirecciones.Colonia;
                     tblClienteDirecciones.Colonia = !string.IsNullOrEmpty(tblClienteDirecciones.Colonia) ? strColonia.Dasenta.ToUpper() : tblClienteDirecciones.Colonia;

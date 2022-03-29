@@ -10,7 +10,7 @@ using WebHecsa.Data;
 namespace WebHecsa.Migrations
 {
     [DbContext(typeof(nDbContext))]
-    [Migration("20220328054756_m01")]
+    [Migration("20220328191713_m01")]
     partial class m01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -185,6 +185,29 @@ namespace WebHecsa.Migrations
                     b.HasKey("IdEstatusRegistro");
 
                     b.ToTable("CatEstatus");
+                });
+
+            modelBuilder.Entity("WebHecsa.Models.CatEstatusCotizacion", b =>
+                {
+                    b.Property<int>("IdEstatusCotizacion")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("EstatusDesc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("FechaRegistro");
+
+                    b.Property<int>("IdEstatusRegistro")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdEstatusCotizacion");
+
+                    b.ToTable("CatEstatusCotizacion");
                 });
 
             modelBuilder.Entity("WebHecsa.Models.CatGenero", b =>
@@ -580,26 +603,18 @@ namespace WebHecsa.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ClienteContacto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DireccionCliente")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DireccionContacto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EmpresaContacto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EmpresaGeneral")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("CatEstatusCotizacionIdEstatusCotizacion")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("FechaRegistro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("FechaRegistro");
 
                     b.Property<Guid>("IdCliente")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("IdClienteContacto")
+                        .HasColumnType("int");
 
                     b.Property<int>("IdDivisa")
                         .HasColumnType("int");
@@ -619,6 +634,9 @@ namespace WebHecsa.Migrations
                     b.Property<Guid?>("IdEmpresaFiscalesNavigationIdEmpresaFiscalesNavigationIdEmpresaFiscales")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("IdEstatusCotizacion")
+                        .HasColumnType("int");
+
                     b.Property<int>("IdEstatusRegistro")
                         .HasColumnType("int");
 
@@ -631,22 +649,12 @@ namespace WebHecsa.Migrations
                     b.Property<int?>("IdTiposEnvioNavigationIdTiposEnvioNavigationIdTiposEnvio")
                         .HasColumnType("int");
 
-                    b.Property<string>("MediosCliente")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NombreCliente")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NombreFiscal")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("NumeroCotizacion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Rfccliente")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("IdCotizacionGeneral");
+
+                    b.HasIndex("CatEstatusCotizacionIdEstatusCotizacion");
 
                     b.HasIndex("IdDivisaNavigationIdDivisaNavigationIdDivisa");
 
@@ -654,7 +662,7 @@ namespace WebHecsa.Migrations
 
                     b.HasIndex("IdTiposEnvioNavigationIdTiposEnvioNavigationIdTiposEnvio");
 
-                    b.ToTable("TblCotizacionGenerals");
+                    b.ToTable("TblCotizacionGenerales");
                 });
 
             modelBuilder.Entity("WebHecsa.Models.TblEmpresa", b =>
@@ -1124,6 +1132,10 @@ namespace WebHecsa.Migrations
 
             modelBuilder.Entity("WebHecsa.Models.TblCotizacionGeneral", b =>
                 {
+                    b.HasOne("WebHecsa.Models.CatEstatusCotizacion", null)
+                        .WithMany("TblCotizacionGenerales")
+                        .HasForeignKey("CatEstatusCotizacionIdEstatusCotizacion");
+
                     b.HasOne("WebHecsa.Models.CatDivisa", "IdDivisaNavigationIdDivisaNavigation")
                         .WithMany("TblCotizacionGenerals")
                         .HasForeignKey("IdDivisaNavigationIdDivisaNavigationIdDivisa");
@@ -1242,6 +1254,11 @@ namespace WebHecsa.Migrations
             modelBuilder.Entity("WebHecsa.Models.CatEstatus", b =>
                 {
                     b.Navigation("TblEmpresas");
+                });
+
+            modelBuilder.Entity("WebHecsa.Models.CatEstatusCotizacion", b =>
+                {
+                    b.Navigation("TblCotizacionGenerales");
                 });
 
             modelBuilder.Entity("WebHecsa.Models.CatGenero", b =>

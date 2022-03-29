@@ -137,7 +137,7 @@ namespace WebHecsa.Controllers
                     tblProveedorContacto.NombreProveedorContacto = tblProveedorContacto.NombreProveedorContacto.ToString().ToUpper();
                     tblProveedorContacto.FechaRegistro = DateTime.Now;
                     tblProveedorContacto.IdEstatusRegistro = 1;
-             
+
                     _context.SaveChanges();
                     _context.Add(tblProveedorContacto);
                     await _context.SaveChangesAsync();
@@ -202,7 +202,7 @@ namespace WebHecsa.Controllers
                     tblProveedorContacto.NombreProveedorContacto = tblProveedorContacto.NombreProveedorContacto.ToString().ToUpper();
                     tblProveedorContacto.FechaRegistro = DateTime.Now;
                     tblProveedorContacto.IdEstatusRegistro = 1;
-        
+
                     _context.SaveChanges();
                     _context.Update(tblProveedorContacto);
                     await _context.SaveChangesAsync();

@@ -64,6 +64,21 @@ namespace WebHecsa.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CatEstatusCotizacion",
+                columns: table => new
+                {
+                    IdEstatusCotizacion = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EstatusDesc = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IdEstatusRegistro = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CatEstatusCotizacion", x => x.IdEstatusCotizacion);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CatGeneros",
                 columns: table => new
                 {
@@ -420,50 +435,50 @@ namespace WebHecsa.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TblCotizacionGenerals",
+                name: "TblCotizacionGenerales",
                 columns: table => new
                 {
                     IdCotizacionGeneral = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NumeroCotizacion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdEmpresaFiscales = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NombreFiscal = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EmpresaGeneral = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EmpresaContacto = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IdClienteContacto = table.Column<int>(type: "int", nullable: false),
                     IdCliente = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NombreCliente = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Rfccliente = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MediosCliente = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DireccionCliente = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DireccionContacto = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClienteContacto = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdTiposEnvio = table.Column<int>(type: "int", nullable: false),
                     IdDivisa = table.Column<int>(type: "int", nullable: false),
                     FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IdEstatusRegistro = table.Column<int>(type: "int", nullable: false),
+                    IdEstatusCotizacion = table.Column<int>(type: "int", nullable: false),
                     IdDivisaNavigationIdDivisa = table.Column<int>(type: "int", nullable: true),
                     IdEmpresaFiscalesNavigationIdEmpresaFiscales = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IdTiposEnvioNavigationIdTiposEnvio = table.Column<int>(type: "int", nullable: true),
                     IdDivisaNavigationIdDivisaNavigationIdDivisa = table.Column<int>(type: "int", nullable: true),
                     IdEmpresaFiscalesNavigationIdEmpresaFiscalesNavigationIdEmpresaFiscales = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    IdTiposEnvioNavigationIdTiposEnvioNavigationIdTiposEnvio = table.Column<int>(type: "int", nullable: true)
+                    IdTiposEnvioNavigationIdTiposEnvioNavigationIdTiposEnvio = table.Column<int>(type: "int", nullable: true),
+                    CatEstatusCotizacionIdEstatusCotizacion = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TblCotizacionGenerals", x => x.IdCotizacionGeneral);
+                    table.PrimaryKey("PK_TblCotizacionGenerales", x => x.IdCotizacionGeneral);
                     table.ForeignKey(
-                        name: "FK_TblCotizacionGenerals_CatDivisas_IdDivisaNavigationIdDivisaNavigationIdDivisa",
+                        name: "FK_TblCotizacionGenerales_CatDivisas_IdDivisaNavigationIdDivisaNavigationIdDivisa",
                         column: x => x.IdDivisaNavigationIdDivisaNavigationIdDivisa,
                         principalTable: "CatDivisas",
                         principalColumn: "IdDivisa",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_TblCotizacionGenerals_CatTipoEnvios_IdTiposEnvioNavigationIdTiposEnvioNavigationIdTiposEnvio",
+                        name: "FK_TblCotizacionGenerales_CatEstatusCotizacion_CatEstatusCotizacionIdEstatusCotizacion",
+                        column: x => x.CatEstatusCotizacionIdEstatusCotizacion,
+                        principalTable: "CatEstatusCotizacion",
+                        principalColumn: "IdEstatusCotizacion",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_TblCotizacionGenerales_CatTipoEnvios_IdTiposEnvioNavigationIdTiposEnvioNavigationIdTiposEnvio",
                         column: x => x.IdTiposEnvioNavigationIdTiposEnvioNavigationIdTiposEnvio,
                         principalTable: "CatTipoEnvios",
                         principalColumn: "IdTiposEnvio",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_TblCotizacionGenerals_TblEmpresaFiscales_IdEmpresaFiscalesNavigationIdEmpresaFiscalesNavigationIdEmpresaFiscales",
+                        name: "FK_TblCotizacionGenerales_TblEmpresaFiscales_IdEmpresaFiscalesNavigationIdEmpresaFiscalesNavigationIdEmpresaFiscales",
                         column: x => x.IdEmpresaFiscalesNavigationIdEmpresaFiscalesNavigationIdEmpresaFiscales,
                         principalTable: "TblEmpresaFiscales",
                         principalColumn: "IdEmpresaFiscales",
@@ -677,18 +692,23 @@ namespace WebHecsa.Migrations
                 column: "IdEmpresaNavigationIdEmpresaNavigationIdEmpresa");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TblCotizacionGenerals_IdDivisaNavigationIdDivisaNavigationIdDivisa",
-                table: "TblCotizacionGenerals",
+                name: "IX_TblCotizacionGenerales_CatEstatusCotizacionIdEstatusCotizacion",
+                table: "TblCotizacionGenerales",
+                column: "CatEstatusCotizacionIdEstatusCotizacion");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TblCotizacionGenerales_IdDivisaNavigationIdDivisaNavigationIdDivisa",
+                table: "TblCotizacionGenerales",
                 column: "IdDivisaNavigationIdDivisaNavigationIdDivisa");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TblCotizacionGenerals_IdEmpresaFiscalesNavigationIdEmpresaFiscalesNavigationIdEmpresaFiscales",
-                table: "TblCotizacionGenerals",
+                name: "IX_TblCotizacionGenerales_IdEmpresaFiscalesNavigationIdEmpresaFiscalesNavigationIdEmpresaFiscales",
+                table: "TblCotizacionGenerales",
                 column: "IdEmpresaFiscalesNavigationIdEmpresaFiscalesNavigationIdEmpresaFiscales");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TblCotizacionGenerals_IdTiposEnvioNavigationIdTiposEnvioNavigationIdTiposEnvio",
-                table: "TblCotizacionGenerals",
+                name: "IX_TblCotizacionGenerales_IdTiposEnvioNavigationIdTiposEnvioNavigationIdTiposEnvio",
+                table: "TblCotizacionGenerales",
                 column: "IdTiposEnvioNavigationIdTiposEnvioNavigationIdTiposEnvio");
 
             migrationBuilder.CreateIndex(
@@ -757,7 +777,7 @@ namespace WebHecsa.Migrations
                 name: "TblClienteDirecciones");
 
             migrationBuilder.DropTable(
-                name: "TblCotizacionGenerals");
+                name: "TblCotizacionGenerales");
 
             migrationBuilder.DropTable(
                 name: "TblProductoPromociones");
@@ -779,6 +799,9 @@ namespace WebHecsa.Migrations
 
             migrationBuilder.DropTable(
                 name: "CatDivisas");
+
+            migrationBuilder.DropTable(
+                name: "CatEstatusCotizacion");
 
             migrationBuilder.DropTable(
                 name: "CatTipoEnvios");

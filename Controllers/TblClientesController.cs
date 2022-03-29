@@ -52,14 +52,23 @@ namespace WebHecsa.Controllers
         [HttpGet]
         public ActionResult FiltroCliente(Guid id)
         {
-            var fCliente = (from tC in _context.TblClientes
-                            join tCd in _context.TblClienteDirecciones on tC.IdCliente equals tCd.IdCliente
-                            where tC.IdCliente == id
+            var fCliente = (from a in _context.TblClientes
+                            join b in _context.TblClienteDirecciones on a.IdCliente equals b.IdCliente
+                            where a.IdCliente == id && b.IdTipoDireccion == 1
                             select new
                             {
-                                IdCliente = tC.IdCliente,
-                                NombreCliente = tC.NombreCliente,
-                                DireccionCliente = tCd.Calle + "," + tCd.CodigoPostal + "," + tCd.Colonia + "," + tCd.Ciudad + "," + tCd.Estado + "," + tCd.CorreoElectronico + "," + tCd.Telefono
+                                IdCliente = a.IdCliente,
+                                NombreCliente = a.NombreCliente,
+                                RfcCliente = a.Rfc,
+                                GiroComercialCliente = a.GiroComercial,
+                                CalleCliente = b.Calle,
+                                CodigoPostalCliente = b.CodigoPostal,
+                                ColoniaCliente = b.Colonia,
+                                CiudadCliente = b.Ciudad,
+                                EstadoCliente = b.Estado,
+                                CorreoElectronicoCliente = b.CorreoElectronico,
+                                TelefonoCliente = b.Telefono
+
                             }).Distinct().ToList();
 
             return Json(fCliente);
@@ -94,7 +103,7 @@ namespace WebHecsa.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCliente,NombreCliente,RFC,GiroComercial")] TblCliente tblCliente)
+        public async Task<IActionResult> Create([Bind("IdCliente,NombreCliente,Rfc,GiroComercial")] TblCliente tblCliente)
         {
             if (ModelState.IsValid)
             {
@@ -151,7 +160,7 @@ namespace WebHecsa.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("IdCliente,NombreCliente,RFC,GiroComercial,IdEstatusRegistro")] TblCliente tblCliente)
+        public async Task<IActionResult> Edit(Guid id, [Bind("IdCliente,NombreCliente,Rfc,GiroComercial,IdEstatusRegistro")] TblCliente tblCliente)
         {
             if (id != tblCliente.IdCliente)
             {

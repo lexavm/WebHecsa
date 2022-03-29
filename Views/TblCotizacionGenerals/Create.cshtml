@@ -81,9 +81,8 @@
             <label asp-for="IdClienteContacto" class="control-label"></label>
             <div class="input-group">
 
-                <select id="sLClienteContacto" class="form-select" asp-for="IdClienteContacto">
-                    <option value="">SELECCIONAR</option>
-                </select>
+                <select id="sLClienteContacto" class="form-select" asp-for="IdClienteContacto" onchange="DatosClientesContactos()">
+                   </select>
                 <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseContactoCliente" aria-expanded="false" aria-controls="collapseContactoCliente">
                     Ver
                 </button>
@@ -98,67 +97,61 @@
                     <div class="form-group">
                         <label asp-for="NombreFiscal" class="control-label"></label>
                         <input style="text-transform:uppercase" asp-for="NombreFiscal" class="form-control" id="iNombreFiscal" readonly="readonly" />
-                        <span asp-validation-for="NombreFiscal" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label asp-for="Rfc" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="Rfc" class="form-control" id="iRfcFiscal" readonly="readonly" />
-                        <span asp-validation-for="Rfc" class="text-danger"></span>
+                        <label asp-for="RfcFiscales" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="RfcFiscales" class="form-control" id="iRfcFiscal" readonly="readonly" />
+
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label asp-for="RegimenFiscal" class="control-label"></label>
                         <input style="text-transform:uppercase" asp-for="RegimenFiscal" class="form-control" id="iRegimenFiscal" readonly="readonly" />
-                        <span asp-validation-for="RegimenFiscal" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="Calle" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="Calle" class="form-control" id="iCalleFiscal" readonly="readonly" />
-                        <span asp-validation-for="Calle" class="text-danger"></span>
+                        <label asp-for="CalleFiscales" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="CalleFiscales" class="form-control" id="iCalleFiscal" readonly="readonly" />
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label asp-for="CodigoPostal" class="control-label"></label>
+                        <label asp-for="CodigoPostalFiscales" class="control-label"></label>
                         <div class="input-group mb-3">
-                            <input type="number" asp-for="CodigoPostal" class="form-control" aria-label="CodigoPostal" aria-describedby="basic-addon2" id="iCodigoPostalFiscal" readonly="readonly">
+                            <input type="number" asp-for="CodigoPostalFiscales" class="form-control" aria-label="CodigoPostal" aria-describedby="basic-addon2" id="iCodigoPostalFiscal" readonly="readonly">
                         </div>
-                        <span asp-validation-for="CodigoPostal" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label asp-for="Colonia" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="Colonia" class="form-control" id="iColoniaFiscal" readonly="readonly" />
-                        <span asp-validation-for="Colonia" class="text-danger"></span>
+                        <label asp-for="ColoniaFiscales" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="ColoniaFiscales" class="form-control" id="iColoniaFiscal" readonly="readonly" />
+
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label asp-for="LocalidadMunicipio" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="LocalidadMunicipio" class="form-control" id="iLocalidadMunicipioFiscal" readonly="readonly" />
-                        <span asp-validation-for="LocalidadMunicipio" class="text-danger"></span>
+                        <label asp-for="LocalidadMunicipioFiscales" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="LocalidadMunicipioFiscales" class="form-control" id="iLocalidadMunicipioFiscal" readonly="readonly" />
+
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label asp-for="Ciudad" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="Ciudad" class="form-control" id="iCiudadFiscal" readonly="readonly" />
-                        <span asp-validation-for="Ciudad" class="text-danger"></span>
+                        <label asp-for="CiudadFiscales" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="CiudadFiscales" class="form-control" id="iCiudadFiscal" readonly="readonly" />
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label asp-for="Estado" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="Estado" class="form-control" id="iEstadoFiscal" readonly="readonly" />
-                        <span asp-validation-for="Estado" class="text-danger"></span>
+                        <label asp-for="EstadoFiscales" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="EstadoFiscales" class="form-control" id="iEstadoFiscal" readonly="readonly" />
                     </div>
                 </div>
             </div>
@@ -167,14 +160,12 @@
                     <div class="form-group">
                         <label asp-for="CorreoElectronicoFiscal" class="control-label"></label>
                         <input asp-for="CorreoElectronicoFiscal" class="form-control" type="email" id="iCorreoElectronicoFiscal" readonly="readonly" />
-                        <span asp-validation-for="CorreoElectronicoFiscal" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label asp-for="TelefonoFiscal" class="control-label"></label>
                         <input asp-for="TelefonoFiscal" class="form-control" type="number" id="iTelefonoFiscal" readonly="readonly" />
-                        <span asp-validation-for="TelefonoFiscal" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -184,14 +175,110 @@
     <br />
     <div class="collapse" id="collapseCliente">
         <div class="card card-body">
-            Cliente
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="NombreCliente" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="NombreCliente" class="form-control" id="iNombreCliente" readonly="readonly" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="GiroComercialCliente" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="GiroComercialCliente" class="form-control" id="iGiroComercialCliente" readonly="readonly" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label asp-for="RfcCliente" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="RfcCliente" class="form-control" id="iRfcCliente" readonly="readonly" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="CalleCliente" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="CalleCliente" class="form-control" id="iCalleCliente" readonly="readonly" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label asp-for="CodigoPostalCliente" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="CodigoPostalCliente" class="form-control" id="iCodigoPostalCliente" readonly="readonly" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="ColoniaCliente" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="ColoniaCliente" class="form-control" id="iColoniaCliente" readonly="readonly" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="CiudadCliente" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="CiudadCliente" class="form-control" id="iCiudadCliente" readonly="readonly" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="EstadoCliente" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="EstadoCliente" class="form-control" id="iEstadoCliente" readonly="readonly" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="CorreoElectronicoCliente" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="CorreoElectronicoCliente" class="form-control" id="iCorreoElectronicoCliente" readonly="readonly" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label asp-for="TelefonoCliente" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="TelefonoCliente" class="form-control" id="iTelefonoCliente" readonly="readonly" />
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
     <br />
     <div class="collapse" id="collapseContactoCliente">
         <div class="card card-body">
-            Contacto Cliente
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label asp-for="PerfilDesc" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="PerfilDesc" class="form-control" id="iPerfilDesc" readonly="readonly" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="NombreClienteContacto" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="NombreClienteContacto" class="form-control" id="iNombreClienteContacto" readonly="readonly" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="CorreoElectronicoClienteContacto" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="CorreoElectronicoClienteContacto" class="form-control" id="iCorreoElectronicoClienteContacto" readonly="readonly" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label asp-for="TelefonoClienteContacto" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="TelefonoClienteContacto" class="form-control" id="iTelefonoClienteContacto" readonly="readonly" />
+                    </div>
+                </div>
+                 <div class="col-md-2">
+                    <div class="form-group">
+                        <label asp-for="TelefonoMovilClienteContact" class="control-label"></label>
+                        <input style="text-transform:uppercase" asp-for="TelefonoMovilClienteContact" class="form-control" id="iTelefonoMovilClienteContacto" readonly="readonly" />
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -225,114 +312,172 @@
     @{
     await Html.RenderPartialAsync("_ValidationScriptsPartial");
 }
-<script>
-           $(document).ready(function () {
-               $(".statesSelect").select2();
-               $(".js-example-responsive").select2({
-        width: 'resolve' // need to override the changed default
+<script type="text/javascript">
+        $(document).ready(function () {
+        $(".statesSelect").select2();
+        $(".js-example-responsive").select2({
+            width: 'resolve' // need to override the changed default
         });
-          $('select2').select2({
-    theme: 'bootstrap4',});
-           });
-             function DatosEmpresaFiscales() {
+        $('select2').select2({
+            theme: 'bootstrap4',
+        });
+    });
+    function DatosEmpresaFiscales() {
 
         var fEmpresasFiscales = document.getElementById("sLEmpresaFiscales").value;
-        var DatosEmpresaFiscales;
+        $.ajax({
+            type: "GET",
+            url: "/TblEmpresaFiscales/FiltroEmpresaFiscales/",
+            data: { id: fEmpresasFiscales },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (list) {
 
-           $.ajax({
-                            type: "GET",
-                            url: "/TblEmpresaFiscales/FiltroEmpresaFiscales/",
-                            data: { id: fEmpresasFiscales },
-                            contentType: "application/json;charset=utf-8",
-                            dataType: "json",
-                            success: function (list) {
+                if (list.length == 0) {
 
-                                if (list.length == 0) {
+                    document.getElementById('iNombreFiscal').value = null;
+                    document.getElementById('iRfcFiscal').value = null;
+                    document.getElementById('iRegimenFiscal').value = null;
+                    document.getElementById('iCalleFiscal').value = null;
+                    document.getElementById('iCodigoPostalFiscal').value = null;
+                    document.getElementById('iColoniaFiscal').value = null;
+                    document.getElementById('iLocalidadMunicipioFiscal').value = null;
+                    document.getElementById('iCiudadFiscal').value = null;
+                    document.getElementById('iEstadoFiscal').value = null;
+                    document.getElementById('iCorreoElectronicoFiscal').value = null;
+                    document.getElementById('iTelefonoFiscal').value = null;
+                }
+                else {
 
-                                    document.getElementById('iNombreFiscal').value = null;
-                                    document.getElementById('iRfcFiscal').value = null;
-                                    document.getElementById('iRegimenFiscal').value = null;
-                                    document.getElementById('iCalleFiscal').value = null;
-                                    document.getElementById('iCodigoPostalFiscal').value = null;
-                                    document.getElementById('iColoniaFiscal').value = null;
-                                    document.getElementById('iLocalidadMunicipioFiscal').value = null;
-                                    document.getElementById('iCiudadFiscal').value = null;
-                                    document.getElementById('iEstadoFiscal').value = null;
-                                    document.getElementById('iCorreoElectronicoFiscal').value = null;
-                                    document.getElementById('iTelefonoFiscal').value = null;
-
-                                }
-                                else {
-
-                                    document.getElementById('iNombreFiscal').value = list[0].nombreFiscal;
-                                    document.getElementById('iRfcFiscal').value = list[0].rfc;
-                                    document.getElementById('iRegimenFiscal').value = list[0].regimenFiscal;
-                                    document.getElementById('iCalleFiscal').value = list[0].calle;
-                                    document.getElementById('iCodigoPostalFiscal').value = list[0].codigoPostal;
-                                    document.getElementById('iColoniaFiscal').value = list[0].colonia;
-                                    document.getElementById('iLocalidadMunicipioFiscal').value = list[0].localidadMunicipio;
-                                    document.getElementById('iCiudadFiscal').value = list[0].ciudad;
-                                    document.getElementById('iEstadoFiscal').value = list[0].estado;
-                                    document.getElementById('iCorreoElectronicoFiscal').value = list[0].correoElectronico;
-                                    document.getElementById('iTelefonoFiscal').value = list[0].telefono;
-                                }
-                            },
-                            error: function () {
-                                alert("Error!!")
-                            }
-                        });
-
-                       }
-                       function DatosClientes() {
-
-
-
+                    document.getElementById('iNombreFiscal').value = list[0].nombreFiscal;
+                    document.getElementById('iRfcFiscal').value = list[0].rfc;
+                    document.getElementById('iRegimenFiscal').value = list[0].regimenFiscal;
+                    document.getElementById('iCalleFiscal').value = list[0].calle;
+                    document.getElementById('iCodigoPostalFiscal').value = list[0].codigoPostal;
+                    document.getElementById('iColoniaFiscal').value = list[0].colonia;
+                    document.getElementById('iLocalidadMunicipioFiscal').value = list[0].localidadMunicipio;
+                    document.getElementById('iCiudadFiscal').value = list[0].ciudad;
+                    document.getElementById('iEstadoFiscal').value = list[0].estado;
+                    document.getElementById('iCorreoElectronicoFiscal').value = list[0].correoElectronico;
+                    document.getElementById('iTelefonoFiscal').value = list[0].telefono;
+                }
+            },
+            error: function () {
+                alert("Error!!")
+            }
+        });
+    }
+    function DatosClientes() {
         var fCliente = document.getElementById("sLCliente").value;
-        var fDatosCliente;
+        fContactosClientes();
+        $.ajax({
+            type: "GET",
+            url: "/TblClientes/FiltroCliente/",
+            data: { id: fCliente },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (list) {
 
-           $.ajax({
-                            type: "GET",
-                            url: "/TblClientes/FiltroCliente/",
-                            data: { id: fCliente },
-                            contentType: "application/json;charset=utf-8",
-                            dataType: "json",
-                            success: function (list) {
+                if (list.length == 0) {
 
-                                    if (list.length == 0) {
+                        document.getElementById('iNombreCliente').value = null;
+                    document.getElementById('iRfcCliente').value = null;
+                    document.getElementById('iGiroComercialCliente').value = null;
+                          document.getElementById('iCalleCliente').value = null;
+                    document.getElementById('iCodigoPostalCliente').value = null;
+                    document.getElementById('iColoniaCliente').value = null;
+                    document.getElementById('iCiudadCliente').value = null;
+                    document.getElementById('iEstadoCliente').value = null;
+                    document.getElementById('iCorreoElectronicoCliente').value = null;
+                    document.getElementById('iTelefonoCliente').value = null;
+                }
+                else {
 
-                                    document.getElementById('iNombreFiscal').value = null;
-                                    document.getElementById('iRfcFiscal').value = null;
-                                    document.getElementById('iRegimenFiscal').value = null;
-                                    document.getElementById('iCalleFiscal').value = null;
-                                    document.getElementById('iCodigoPostalFiscal').value = null;
-                                    document.getElementById('iColoniaFiscal').value = null;
-                                    document.getElementById('iLocalidadMunicipioFiscal').value = null;
-                                    document.getElementById('iCiudadFiscal').value = null;
-                                    document.getElementById('iEstadoFiscal').value = null;
-                                    document.getElementById('iCorreoElectronicoFiscal').value = null;
-                                    document.getElementById('iTelefonoFiscal').value = null;
+                    document.getElementById('iNombreCliente').value = list[0].nombreCliente;
+                    document.getElementById('iRfcCliente').value = list[0].rfcCliente;
+                    document.getElementById('iGiroComercialCliente').value = list[0].giroComercialCliente;
+                    document.getElementById('iCalleCliente').value = list[0].calleCliente;
+                    document.getElementById('iCodigoPostalCliente').value = list[0].codigoPostalCliente;
+                    document.getElementById('iColoniaCliente').value = list[0].coloniaCliente;
+                    document.getElementById('iCiudadCliente').value = list[0].ciudadCliente;
+                    document.getElementById('iEstadoCliente').value = list[0].estadoCliente;
+                    document.getElementById('iCorreoElectronicoCliente').value = list[0].correoElectronicoCliente;
+                    document.getElementById('iTelefonoCliente').value = list[0].telefonoCliente;
 
-                                }
-                                else {
+                }
+            },
+            error: function () {
+                alert("Error!!")
+            }
+        });
 
-                                    document.getElementById('iNombreFiscal').value = list[0].nombreFiscal;
-                                    document.getElementById('iRfcFiscal').value = list[0].rfc;
-                                    document.getElementById('iRegimenFiscal').value = list[0].regimenFiscal;
-                                    document.getElementById('iCalleFiscal').value = list[0].calle;
-                                    document.getElementById('iCodigoPostalFiscal').value = list[0].codigoPostal;
-                                    document.getElementById('iColoniaFiscal').value = list[0].colonia;
-                                    document.getElementById('iLocalidadMunicipioFiscal').value = list[0].localidadMunicipio;
-                                    document.getElementById('iCiudadFiscal').value = list[0].ciudad;
-                                    document.getElementById('iEstadoFiscal').value = list[0].estado;
-                                    document.getElementById('iCorreoElectronicoFiscal').value = list[0].correoElectronico;
-                                    document.getElementById('iTelefonoFiscal').value = list[0].telefono;
-                                }
-                            },
-                            error: function () {
-                                alert("Error!!")
-                            }
-                        });
+    }
+    function fContactosClientes() {
+        var fCliente = document.getElementById("sLCliente").value;
+        $.ajax({
+            type: "GET",
+            url: "/TblClienteContactos/FiltroContactos/",
+            data: { id: fCliente },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (list) {
 
-                       }
+                var $select_ClienteContacto = $('#sLClienteContacto');
+                $("#sLClienteContacto").empty();
+                if (list.length == 0) {
+
+                    $select_ClienteContacto.append('<option value="">SELECCIONAR</option>');
+                }
+                else {
+
+                    $select_ClienteContacto.append('<option value="">SELECCIONAR</option>');
+                    for (var i = 0, len = list.length; i < len; i++) {
+                        $select_ClienteContacto.append('<option value=' + list[i].idClienteContacto + '>' + list[i].nombreClienteContacto + '</option>');
+                    }
+                }
+            },
+            error: function () {
+                alert("Error!!")
+            }
+        });
+
+    }
+        function DatosClientesContactos() {
+        var fCliente = document.getElementById("sLClienteContacto").value;
+
+        $.ajax({
+            type: "GET",
+            url: "/TblClienteContactos/FiltroDatosContactos/",
+            data: { id: fCliente },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (list) {
+
+                if (list.length == 0) {
+
+                    document.getElementById('iPerfilDesc').value = null;
+                    document.getElementById('iNombreClienteContacto').value = null;
+                    document.getElementById('iCorreoElectronicoClienteContacto').value = null;
+                    document.getElementById('iTelefonoClienteContacto').value = null;
+                    document.getElementById('iTelefonoMovilClienteContacto').value = null;
+
+                }
+                else {
+
+                    document.getElementById('iPerfilDesc').value = list[0].perfilDesc;
+                    document.getElementById('iNombreClienteContacto').value = list[0].nombreClienteContacto;
+                    document.getElementById('iCorreoElectronicoClienteContacto').value = list[0].correoElectronicoClienteContacto;
+                    document.getElementById('iTelefonoClienteContacto').value = list[0].telefonoClienteContacto;
+                    document.getElementById('iTelefonoMovilClienteContacto').value = list[0].telefonoMovilClienteContacto;
+
+
+                }
+            },
+            error: function () {
+                alert("Error!!")
+            }
+        });
+
+    }
 </script>
 }

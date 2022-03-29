@@ -12,7 +12,7 @@ namespace WebHecsa.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid IdCotizacionGeneral { get; set; }
-        [Display(Name = "Numero Cotizacion")]
+        [Display(Name = "Numero Cotización")]
 
         public string NumeroCotizacion { get; set; }
 
@@ -24,56 +24,107 @@ namespace WebHecsa.Models
 
         public string NombreFiscal { get; set; }
         [NotMapped]
-        [Display(Name = "RFC")]
-        public string Rfc { get; set; }
+        [Display(Name = "RFC Fiscal")]
+        public string RfcFiscales { get; set; }
         [NotMapped]
-        [Display(Name = "Regimen Fiscal")]
+        [Display(Name = "Régimen Fiscal")]
         public string RegimenFiscal { get; set; }
         [NotMapped]
-        [Display(Name = "Calle")]
+        [Display(Name = "Calle Fiscal")]
 
-        public string Calle { get; set; }
+        public string CalleFiscales { get; set; }
         [NotMapped]
-        [Display(Name = "Codigo Postal")]
+        [Display(Name = "Código Postal Fiscal")]
 
-        public string CodigoPostal { get; set; }
+        public string CodigoPostalFiscales { get; set; }
         [NotMapped]
-        [Display(Name = "Colonia")]
+        [Display(Name = "Colonia Fiscal")]
         public string IdColonia { get; set; }
         [NotMapped]
-        [Display(Name = "Colonia")]
+        [Display(Name = "Colonia Fiscal")]
 
-        public string Colonia { get; set; }
+        public string ColoniaFiscales { get; set; }
         [NotMapped]
-        [Display(Name = "Localidad / Municipio")]
+        [Display(Name = "Localidad / Municipio Fiscal")]
 
-        public string LocalidadMunicipio { get; set; }
-        [NotMapped]
-
-        [Display(Name = "Ciudad")]
-
-        public string Ciudad { get; set; }
+        public string LocalidadMunicipioFiscales { get; set; }
         [NotMapped]
 
-        [Display(Name = "Estado")]
+        [Display(Name = "Ciudad Fiscal")]
 
-        public string Estado { get; set; }
+        public string CiudadFiscales { get; set; }
         [NotMapped]
 
-        [Display(Name = "Correo Electronico")]
+        [Display(Name = "Estado Fiscal")]
+
+        public string EstadoFiscales { get; set; }
+        [NotMapped]
+
+        [Display(Name = "Correo Electrónico Fiscal")]
 
         public string CorreoElectronicoFiscal { get; set; }
         [NotMapped]
 
-        [Display(Name = "Telefono")]
+        [Display(Name = "Teléfono Fiscal")]
 
         public string TelefonoFiscal { get; set; }
+        [Display(Name = "Cliente")]
+        [Required(ErrorMessage = "Campo Requerido")]
+        public Guid IdCliente { get; set; }
+        [NotMapped]
+        [Display(Name = "Nombre Cliente")]
+        public string NombreCliente { get; set; }
+        [NotMapped]
+        [Display(Name = "RFC Cliente")]
+
+        public string RfcCliente { get; set; }
+        [NotMapped]
+        [Display(Name = "Giro Comercial Cliente")]
+
+        public string GiroComercialCliente { get; set; }
 
         [Display(Name = "Contacto Cliente")]
         public int IdClienteContacto { get; set; }
         [NotMapped]
-        [Display(Name = "Perfil")]
+        [Display(Name = "Calle Cliente")]
 
+        public string CalleCliente { get; set; }
+        [NotMapped]
+        [Display(Name = "Código Postal Cliente")]
+
+        public string CodigoPostalCliente { get; set; }
+        [NotMapped]
+        [Display(Name = "Colonia Cliente")]
+        public string IdColoniaCliente { get; set; }
+        [NotMapped]
+        [Display(Name = "Colonia Cliente")]
+
+        public string ColoniaCliente { get; set; }
+        [NotMapped]
+        [Display(Name = "Localidad / Municipio Cliente")]
+
+        public string LocalidadMunicipioCliente { get; set; }
+        [NotMapped]
+
+        [Display(Name = "Ciudad Cliente")]
+
+        public string CiudadCliente { get; set; }
+        [NotMapped]
+
+        [Display(Name = "Estado Cliente")]
+
+        public string EstadoCliente { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Correo Electrónico Cliente")]
+
+        public string CorreoElectronicoCliente { get; set; }
+        [NotMapped]
+        [Display(Name = "Teléfono Contacto")]
+
+        public string TelefonoCliente { get; set; }
+        [NotMapped]
+        [Display(Name = "Perfil")]
         public int IdPerfil { get; set; }
         [NotMapped]
         [Display(Name = "Perfil")]
@@ -83,24 +134,18 @@ namespace WebHecsa.Models
 
         public string NombreClienteContacto { get; set; }
         [NotMapped]
-        [Display(Name = "Correo Electronico Contacto")]
+        [Display(Name = "Correo Electrónico Contacto")]
 
+        public string CorreoElectronicoClienteContacto { get; set; }
+        [NotMapped]
+        [Display(Name = "Teléfono Contacto")]
 
-        public string CorreoElectronicoContacto { get; set; }
+        public string TelefonoClienteContacto { get; set; }
         [NotMapped]
-        [Display(Name = "Telefono Contacto")]
+        [Display(Name = "Teléfono Móvil Contacto")]
+        public string TelefonoMovilClienteContact { get; set; }
 
-        public string TelefonoContacto { get; set; }
-        [NotMapped]
-        [Display(Name = "Telefono Movil Contacto")]
-        public string TelefonoMovilContacto { get; set; }
-        [Display(Name = "Cliente")]
-        [Required(ErrorMessage = "Campo Requerido")]
-        public Guid IdCliente { get; set; }
-        [NotMapped]
-        [Display(Name = "Nombre Cliente")]
-        public string NombreCliente { get; set; }
-        [Display(Name = "Tipo Envio")]
+        [Display(Name = "Tipo Envío")]
         [Required(ErrorMessage = "Campo Requerido")]
         public int IdTiposEnvio { get; set; }
         [Display(Name = "Divisa")]
@@ -116,11 +161,11 @@ namespace WebHecsa.Models
         public DateTime FechaRegistro { get; set; }
         [Display(Name = "Estatus")]
         public int IdEstatusRegistro { get; set; }
-        [Display(Name = "Estatus Cotizacion")]
+        [Display(Name = "Estatus Cotización")]
         [Required(ErrorMessage = "Campo Requerido")]
         public int IdEstatusCotizacion { get; set; }
         [NotMapped]
-        [Display(Name = "Estatus Cotizacion")]
+        [Display(Name = "Estatus Cotización")]
 
         public string EstatusCotizacionDesc { get; set; }
         public int? IdDivisaNavigationIdDivisa { get; set; }

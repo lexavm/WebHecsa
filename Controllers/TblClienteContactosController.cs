@@ -84,7 +84,39 @@ namespace WebHecsa.Controllers
             return View(await fTblClienteContacto.ToListAsync());
             //return View(await _context.TblClienteDirecciones.ToListAsync());
         }
+        [HttpGet]
+        public ActionResult FiltroContactos(Guid id)
+        {
+            var fClienteContacto = (from a in _context.TblClienteContactos
+                                    join b in _context.CatPerfiles on a.IdPerfil equals b.IdPerfil
+                                    where a.IdCliente == id
+                                    select new
+                                    {
+                                        IdClienteContacto = a.IdClienteContacto,
+                                        NombreClienteContacto = a.NombreClienteContacto,
+                                    }).Distinct().ToList();
 
+            return Json(fClienteContacto);
+        }
+        [HttpGet]
+        public ActionResult FiltroDatosContactos(int id)
+        {
+            var fClienteContacto = (from a in _context.TblClienteContactos
+                            join b in _context.CatPerfiles on a.IdPerfil equals b.IdPerfil
+                            where a.IdClienteContacto == id
+                            select new
+                            {
+                                IdClienteContacto = a.IdClienteContacto,
+                                PerfilDesc = b.PerfilDesc,
+                                NombreClienteContacto = a.NombreClienteContacto,
+                                CorreoElectronicoClienteContacto = a.CorreoElectronico,
+                                TelefonoClienteContacto = a.Telefono,
+                                TelefonoMovilClienteContacto = a.TelefonoMovil
+
+                            }).Distinct().ToList();
+
+            return Json(fClienteContacto);
+        }
         // GET: TblClienteContactoes/Details/5
         public async Task<IActionResult> Details(int? id)
         {

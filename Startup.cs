@@ -26,10 +26,11 @@ namespace WebHecsa
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = "server=iides.tech;user=iidestec_usr;database=iidestec_hecsa;port=3306;password=AX%B3#XqX@2q;";
+            var serverVersion = new MySqlServerVersion(new Version(5, 7, 37));
             services.AddDbContext<nDbContext>(options =>
-                 options.UseSqlServer(
-                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDatabaseDeveloperPageExceptionFilter();
+                 options.UseMySql(connectionString, serverVersion));
+            //services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddControllersWithViews();
             services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.BottomRight; });
         }

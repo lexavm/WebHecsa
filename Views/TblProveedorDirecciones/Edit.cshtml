@@ -160,10 +160,10 @@
                     else {
                         $select_colonias.append('<option value="">SELECCIONAR</option>');
                         for (var i = 0, len = list.length; i < len; i++) {
-                            $select_colonias.append('<option value=' + list[i].id_asenta_cpcons + '>' + list[i].d_asenta + '</option>');
-                            document.getElementById("idLocalidadMunicipio").value = list[i].d_mnpio;
-                            document.getElementById("idCiudad").value = list[i].d_ciudad;
-                            document.getElementById("idEstados").value = list[i].d_estado;
+                              $select_colonias.append('<option value=' + list[i].idAsentaCpcons + '>' + list[i].dasenta + '</option>');
+                        document.getElementById("idLocalidadMunicipio").setAttribute('value',list[i].dmnpio);
+                        document.getElementById("idCiudad").setAttribute('value',list[i].dciudad);
+                        document.getElementById("idEstados").setAttribute('value',list[i].destado);
                         }
                     }
                 },
@@ -191,7 +191,7 @@
                     else {
 
                         for (var i = 0, len = list.length; i < len; i++) {
-                            $select_colonias.append('<option value=' + list[i].id_asenta_cpcons + '>' + list[i].d_asenta + '</option>');
+                             $select_colonias.append('<option value=' + list[i].idAsentaCpcons + '>' + list[i].dasenta + '</option>');
                         }
                     }
                 },

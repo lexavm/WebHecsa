@@ -6,7 +6,7 @@
 }
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        
+
         <li class="breadcrumb-item">Información</li>
         <li class="breadcrumb-item">Empresa</li>
         <li class="breadcrumb-item">Control de Proveedor</li>
@@ -97,7 +97,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label asp-for="CorreoElectronico" class="control-label"></label>
-                    <input id="iCorreoElectronico" asp-for="CorreoElectronico" class="form-control" type="email"  />
+                    <input id="iCorreoElectronico" asp-for="CorreoElectronico" class="form-control" type="email" />
                     <span asp-validation-for="CorreoElectronico" class="text-danger"></span>
                 </div>
             </div>
@@ -128,7 +128,7 @@
           let Rfc = document.getElementById("iRfc").value;
           document.getElementById("estatus").innerHTML = pattern.test(Rfc);
         }
-                function filtro_cp() {
+       function filtro_cp() {
 
                     var valor_cp = document.getElementById("iCodigoPostal").value;
 
@@ -151,10 +151,10 @@
                             else {
                                 $select_colonias.append('<option value="">Seleccionar Colonia</option>');
                                 for (var i = 0, len = list.length; i < len; i++) {
-                                    $select_colonias.append('<option value=' + list[i].id_asenta_cpcons + '>' + list[i].d_asenta + '</option>');
-                                     document.getElementById("idLocalidadMunicipio").setAttribute('value',list[i].d_mnpio);
-                                     document.getElementById("idCiudad").setAttribute('value',list[i].d_ciudad);
-                                     document.getElementById("idEstados").setAttribute('value',list[i].d_estado);
+                                  $select_colonias.append('<option value=' + list[i].idAsentaCpcons + '>' + list[i].dasenta + '</option>');
+                        document.getElementById("idLocalidadMunicipio").setAttribute('value',list[i].dmnpio);
+                        document.getElementById("idCiudad").setAttribute('value',list[i].dciudad);
+                        document.getElementById("idEstados").setAttribute('value',list[i].destado);
                                 }
                             }
                         },

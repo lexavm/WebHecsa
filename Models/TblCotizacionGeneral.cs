@@ -158,6 +158,49 @@ namespace WebHecsa.Models
         [Column("FechaRegistro")]
         [DataType(DataType.Date)]
         [Display(Name = "Fecha Registro")]
+
+        [NotMapped]
+        public int IdProducto { get; set; }
+        [NotMapped]
+        [Display(Name = "Codigo Interno")]
+        public string CodigoInterno { get; set; }
+        [NotMapped]
+        [Display(Name = "Codigo Externo")]
+        [Required(ErrorMessage = "Campo Requerido")]
+        public string CodigoExterno { get; set; }
+        [NotMapped]
+        [Display(Name = "Marca")]
+        [Required(ErrorMessage = "Campo Requerido")]
+        public int IdMarca { get; set; }
+        
+        [Display(Name = "Marca")]
+        [NotMapped]
+        public string MarcaDesc { get; set; }
+        [NotMapped]
+        [Display(Name = "Categoria")]
+        [Required(ErrorMessage = "Campo Requerido")]
+        public int IdCategoria { get; set; }
+        
+        [Display(Name = "Categoria")]
+        [NotMapped]
+        public string CategoriaDesc { get; set; }
+        [NotMapped]
+        [Display(Name = "Descripcion Producto")]
+        public string DescProducto { get; set; }
+        [NotMapped]
+        [Display(Name = "Minima")]
+        public int CantidadMinima { get; set; }
+        [NotMapped]
+        [Display(Name = "Cantidad")]
+        public int Cantidad { get; set; }
+        [NotMapped]
+        [Display(Name = "Precio")]
+        public decimal ProductoPrecioUno { get; set; }
+        [NotMapped]
+        [Display(Name = "Porcentaje")]
+        public decimal PorcentajePrecioUno { get; set; }
+        [NotMapped]
+        public decimal SubCosto { get; set; }
         public DateTime FechaRegistro { get; set; }
         [Display(Name = "Estatus")]
         public int IdEstatusRegistro { get; set; }

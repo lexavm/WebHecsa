@@ -156,6 +156,14 @@ namespace WebHecsa.Controllers
             ListaCliente = (from c in _context.TblClientes select c).Distinct().ToList();
             ViewBag.ListaCliente = ListaCliente;
 
+            List<CatMarca> ListaMarca = new List<CatMarca>();
+            ListaMarca = (from c in _context.CatMarcas select c).Distinct().ToList();
+            ViewBag.ListaMarca = ListaMarca;
+
+            List<CatCategoria> ListaCategoria = new List<CatCategoria>();
+            ListaCategoria = (from c in _context.CatCategorias select c).Distinct().ToList();
+            ViewBag.ListaCategoria = ListaCategoria;
+
             return View();
         }
 

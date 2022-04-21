@@ -48,8 +48,9 @@ namespace WebHecsa.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-
-                optionsBuilder.UseSqlServer("Server=95.111.249.203;Database=DevAdminHecsa; User ID=sa;Password=D3s4rr01l0; Integrated Security=false;");
+                var connectionString = "server=iides.tech;user=iidestec_usr;database=iidestec_hecsa;port=3306;password=AX%B3#XqX@2q;";
+                var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
+                optionsBuilder.UseMySql(connectionString, serverVersion);
             }
         }
 

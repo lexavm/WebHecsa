@@ -18,293 +18,378 @@
 
 <form asp-action="Create">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-2">
-            <div class="form-group">
-                <label asp-for="NumeroCotizacion" class="control-label"></label>
-                <input asp-for="NumeroCotizacion" class="form-control" readonly="readonly" />
-                <span asp-validation-for="NumeroCotizacion" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                <label asp-for="DivisaDesc" class="control-label"></label>
-                <input asp-for="DivisaDesc" class="form-control" readonly="readonly" />
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                <label asp-for="IdTiposEnvio" class="control-label"></label>
-                <select id="idListaTiposEnvio" class="js-example-basic-single form-control" asp-for="IdTiposEnvio" asp-items="@(new SelectList(ViewBag.ListaTiposEnvio,"IdTiposEnvio","TiposEnvioDesc"))">
-                    <option value="">SELECCIONAR</option>
-                </select>
-                <span asp-validation-for="IdTiposEnvio" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                <label asp-for="EstatusCotizacionDesc" class="control-label"></label>
-                <input asp-for="EstatusCotizacionDesc" class="form-control" readonly="readonly" />
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            <label asp-for="IdEmpresaFiscales" class="control-label"></label>
-            <div class="input-group">
+    <div class="container-fluid">
+        <div class="accordion" id="accordionDatosGenerales">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsDatosGenerales" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        Datos Generales
+                    </button>
+                </h2>
+                <div id="panelsDatosGenerales" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label asp-for="NumeroCotizacion" class="control-label"></label>
+                                    <input asp-for="NumeroCotizacion" class="form-control" readonly="readonly" />
+                                    <span asp-validation-for="NumeroCotizacion" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label asp-for="DivisaDesc" class="control-label"></label>
+                                    <input asp-for="DivisaDesc" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label asp-for="IdTiposEnvio" class="control-label"></label>
+                                    <select id="idListaTiposEnvio" class="js-example-basic-single form-control" asp-for="IdTiposEnvio" asp-items="@(new SelectList(ViewBag.ListaTiposEnvio,"IdTiposEnvio","TiposEnvioDesc"))">
+                                        <option value="">SELECCIONAR</option>
+                                    </select>
+                                    <span asp-validation-for="IdTiposEnvio" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label asp-for="EstatusCotizacionDesc" class="control-label"></label>
+                                    <input asp-for="EstatusCotizacionDesc" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                <label asp-for="IdEmpresaFiscales" class="control-label"></label>
+                                <div class="input-group">
 
-                <select id="sLEmpresaFiscales" class="form-select" asp-for="IdEmpresaFiscales" asp-items="@(new SelectList(ViewBag.ListaEfiscales,"IdEmpresaFiscales","NombreFiscal"))" onchange="DatosEmpresaFiscales()">
-                    <option value="">SELECCIONAR</option>
-                </select>
-                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFiscales" aria-expanded="false" aria-controls="collapseFiscales">
-                    Ver
-                </button>
-            </div>
-            <span asp-validation-for="IdEmpresaFiscales" class="text-danger"></span>
-        </div>
-        <div class="col-md-4">
-            <label asp-for="IdCliente" class="control-label"></label>
-            <div class="input-group">
-                <select id="sLCliente" class="js-example-responsive form-select" single="single" style="height: 500%" asp-for="IdCliente" asp-items="@(new SelectList(ViewBag.ListaCliente,"IdCliente","NombreCliente"))" onchange="DatosClientes()">
-                    <option value="">SELECCIONAR</option>
-                </select>
+                                    <select id="sLEmpresaFiscales" class="form-select" asp-for="IdEmpresaFiscales" asp-items="@(new SelectList(ViewBag.ListaEfiscales,"IdEmpresaFiscales","NombreFiscal"))" onchange="DatosEmpresaFiscales()">
+                                        <option value="">SELECCIONAR</option>
+                                    </select>
+                                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFiscales" aria-expanded="false" aria-controls="collapseFiscales">
+                                        Ver
+                                    </button>
+                                </div>
+                                <span asp-validation-for="IdEmpresaFiscales" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <label asp-for="IdCliente" class="control-label"></label>
+                                <div class="input-group">
+                                    <select id="sLCliente" class="js-example-responsive form-select" asp-for="IdCliente" asp-items="@(new SelectList(ViewBag.ListaCliente,"IdCliente","NombreCliente"))" onchange="DatosClientes()">
+                                        <option value="">SELECCIONAR</option>
+                                    </select>
 
 
-                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCliente" aria-expanded="false" aria-controls="collapseCliente">
-                    Ver
-                </button>
-            </div>
-            <span asp-validation-for="IdCliente" class="text-danger"></span>
-        </div>
-        <div class="col-md-5">
-            <label asp-for="IdClienteContacto" class="control-label"></label>
-            <div class="input-group">
+                                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCliente" aria-expanded="false" aria-controls="collapseCliente">
+                                        Ver
+                                    </button>
+                                </div>
+                                <span asp-validation-for="IdCliente" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                                <label asp-for="IdClienteContacto" class="control-label"></label>
+                                <div class="input-group">
 
-                <select id="sLClienteContacto" class="form-select" asp-for="IdClienteContacto" onchange="DatosClientesContactos()">
-                   </select>
-                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseContactoCliente" aria-expanded="false" aria-controls="collapseContactoCliente">
-                    Ver
-                </button>
-            </div>
-        </div>
-    </div>
-    <br />
-    <div class="collapse" id="collapseFiscales">
-        <div class="card card-body">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="NombreFiscal" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="NombreFiscal" class="form-control" id="iNombreFiscal" readonly="readonly" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label asp-for="RfcFiscales" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="RfcFiscales" class="form-control" id="iRfcFiscal" readonly="readonly" />
+                                    <select id="sLClienteContacto" class="form-select" asp-for="IdClienteContacto" onchange="DatosClientesContactos()">
+                                        <option value="">SELECCIONAR</option>
+                                    </select>
+                                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseContactoCliente" aria-expanded="false" aria-controls="collapseContactoCliente">
+                                        Ver
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
 
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="RegimenFiscal" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="RegimenFiscal" class="form-control" id="iRegimenFiscal" readonly="readonly" />
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="CalleFiscales" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="CalleFiscales" class="form-control" id="iCalleFiscal" readonly="readonly" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label asp-for="CodigoPostalFiscales" class="control-label"></label>
-                        <div class="input-group mb-3">
-                            <input type="number" asp-for="CodigoPostalFiscales" class="form-control" aria-label="CodigoPostal" aria-describedby="basic-addon2" id="iCodigoPostalFiscal" readonly="readonly">
+                            <div class="collapse" id="collapseFiscales">
+                                <div class="card card-body">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label asp-for="NombreFiscal" class="control-label"></label>
+                                                <input style="text-transform:uppercase" asp-for="NombreFiscal" class="form-control" id="iNombreFiscal" readonly="readonly" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label asp-for="RfcFiscales" class="control-label"></label>
+                                                <input style="text-transform:uppercase" asp-for="RfcFiscales" class="form-control" id="iRfcFiscal" readonly="readonly" />
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label asp-for="RegimenFiscal" class="control-label"></label>
+                                                <input style="text-transform:uppercase" asp-for="RegimenFiscal" class="form-control" id="iRegimenFiscal" readonly="readonly" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label asp-for="CalleFiscales" class="control-label"></label>
+                                                <input style="text-transform:uppercase" asp-for="CalleFiscales" class="form-control" id="iCalleFiscal" readonly="readonly" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label asp-for="CodigoPostalFiscales" class="control-label"></label>
+                                                <div class="input-group mb-3">
+                                                    <input type="number" asp-for="CodigoPostalFiscales" class="form-control" aria-label="CodigoPostal" aria-describedby="basic-addon2" id="iCodigoPostalFiscal" readonly="readonly">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label asp-for="ColoniaFiscales" class="control-label"></label>
+                                                <input style="text-transform:uppercase" asp-for="ColoniaFiscales" class="form-control" id="iColoniaFiscal" readonly="readonly" />
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label asp-for="LocalidadMunicipioFiscales" class="control-label"></label>
+                                                <input style="text-transform:uppercase" asp-for="LocalidadMunicipioFiscales" class="form-control" id="iLocalidadMunicipioFiscal" readonly="readonly" />
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label asp-for="CiudadFiscales" class="control-label"></label>
+                                                <input style="text-transform:uppercase" asp-for="CiudadFiscales" class="form-control" id="iCiudadFiscal" readonly="readonly" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label asp-for="EstadoFiscales" class="control-label"></label>
+                                                <input style="text-transform:uppercase" asp-for="EstadoFiscales" class="form-control" id="iEstadoFiscal" readonly="readonly" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label asp-for="CorreoElectronicoFiscal" class="control-label"></label>
+                                                <input asp-for="CorreoElectronicoFiscal" class="form-control" type="email" id="iCorreoElectronicoFiscal" readonly="readonly" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label asp-for="TelefonoFiscal" class="control-label"></label>
+                                                <input asp-for="TelefonoFiscal" class="form-control" type="number" id="iTelefonoFiscal" readonly="readonly" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="collapse" id="collapseCliente">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label asp-for="NombreCliente" class="control-label"></label>
+                                            <input style="text-transform:uppercase" asp-for="NombreCliente" class="form-control" id="iNombreCliente" readonly="readonly" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label asp-for="GiroComercialCliente" class="control-label"></label>
+                                            <input style="text-transform:uppercase" asp-for="GiroComercialCliente" class="form-control" id="iGiroComercialCliente" readonly="readonly" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label asp-for="RfcCliente" class="control-label"></label>
+                                            <input style="text-transform:uppercase" asp-for="RfcCliente" class="form-control" id="iRfcCliente" readonly="readonly" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="CalleCliente" class="control-label"></label>
+                                            <input style="text-transform:uppercase" asp-for="CalleCliente" class="form-control" id="iCalleCliente" readonly="readonly" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label asp-for="CodigoPostalCliente" class="control-label"></label>
+                                            <input style="text-transform:uppercase" asp-for="CodigoPostalCliente" class="form-control" id="iCodigoPostalCliente" readonly="readonly" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label asp-for="ColoniaCliente" class="control-label"></label>
+                                            <input style="text-transform:uppercase" asp-for="ColoniaCliente" class="form-control" id="iColoniaCliente" readonly="readonly" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label asp-for="CiudadCliente" class="control-label"></label>
+                                            <input style="text-transform:uppercase" asp-for="CiudadCliente" class="form-control" id="iCiudadCliente" readonly="readonly" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label asp-for="EstadoCliente" class="control-label"></label>
+                                            <input style="text-transform:uppercase" asp-for="EstadoCliente" class="form-control" id="iEstadoCliente" readonly="readonly" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label asp-for="CorreoElectronicoCliente" class="control-label"></label>
+                                            <input style="text-transform:uppercase" asp-for="CorreoElectronicoCliente" class="form-control" id="iCorreoElectronicoCliente" readonly="readonly" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label asp-for="TelefonoCliente" class="control-label"></label>
+                                            <input style="text-transform:uppercase" asp-for="TelefonoCliente" class="form-control" id="iTelefonoCliente" readonly="readonly" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="collapse" id="collapseContactoCliente">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label asp-for="PerfilDesc" class="control-label"></label>
+                                            <input style="text-transform:uppercase" asp-for="PerfilDesc" class="form-control" id="iPerfilDesc" readonly="readonly" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label asp-for="NombreClienteContacto" class="control-label"></label>
+                                            <input style="text-transform:uppercase" asp-for="NombreClienteContacto" class="form-control" id="iNombreClienteContacto" readonly="readonly" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label asp-for="CorreoElectronicoClienteContacto" class="control-label"></label>
+                                            <input style="text-transform:uppercase" asp-for="CorreoElectronicoClienteContacto" class="form-control" id="iCorreoElectronicoClienteContacto" readonly="readonly" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label asp-for="TelefonoClienteContacto" class="control-label"></label>
+                                            <input style="text-transform:uppercase" asp-for="TelefonoClienteContacto" class="form-control" id="iTelefonoClienteContacto" readonly="readonly" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label asp-for="TelefonoMovilClienteContact" class="control-label"></label>
+                                            <input style="text-transform:uppercase" asp-for="TelefonoMovilClienteContact" class="form-control" id="iTelefonoMovilClienteContacto" readonly="readonly" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label asp-for="ColoniaFiscales" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="ColoniaFiscales" class="form-control" id="iColoniaFiscal" readonly="readonly" />
-
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="LocalidadMunicipioFiscales" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="LocalidadMunicipioFiscales" class="form-control" id="iLocalidadMunicipioFiscal" readonly="readonly" />
-
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label asp-for="CiudadFiscales" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="CiudadFiscales" class="form-control" id="iCiudadFiscal" readonly="readonly" />
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="EstadoFiscales" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="EstadoFiscales" class="form-control" id="iEstadoFiscal" readonly="readonly" />
-                    </div>
-                </div>
             </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="CorreoElectronicoFiscal" class="control-label"></label>
-                        <input asp-for="CorreoElectronicoFiscal" class="form-control" type="email" id="iCorreoElectronicoFiscal" readonly="readonly" />
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="TelefonoFiscal" class="control-label"></label>
-                        <input asp-for="TelefonoFiscal" class="form-control" type="number" id="iTelefonoFiscal" readonly="readonly" />
+        </div>
+
+        <br />
+        <div class="accordion" id="accordionProductos">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsProductos" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        Productos
+                    </button>
+                </h2>
+                <div id="panelsProductos" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label asp-for="IdMarca" class="control-label"></label>
+                                    <select id="drpMarcas" class="form-select" asp-for="IdMarca" asp-items="@(new SelectList(ViewBag.ListaMarca,"IdMarca","MarcaDesc"))">
+                                        <option value="">SELECCIONAR</option>
+                                    </select>
+                                    <span asp-validation-for="IdMarca" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                            <div class="col-md-3">
+                                <label asp-for="IdCategoria" class="control-label"></label>
+                                <div class="input-group">
+                                    <select id="drpCategorias" class="form-select" asp-for="IdCategoria" asp-items="@(new SelectList(ViewBag.ListaCategoria,"IdCategoria","CategoriaDesc"))">
+                                        <option value="">SELECCIONAR</option>
+                                    </select>
+                                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseFiscales"  onclick="LoadData()">
+                                        Cargar
+                                    </button>
+                                    <span asp-validation-for="IdCategoria" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <label asp-for="DescProducto" class="control-label"></label>
+                                <div class="input-group">
+                                    <select id="sLDescProducto" class="js-example-responsive form-select" asp-for="DescProducto">
+                                        <option value="">SELECCIONAR</option>
+                                    </select>
+                                    <button id="btnDescProducto" class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseCliente" disabled onclick="AddData()">
+                                        Agregar
+                                    </button>
+                                </div>
+                                <span asp-validation-for="DescProducto" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <table class="table" id="tblProductos">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:center">
+                                            @Html.DisplayNameFor(model => model.CodigoInterno)
+                                        </th>
+                                        <th style="text-align:center">
+                                            @Html.DisplayNameFor(model => model.CodigoExterno)
+                                        </th>
+
+                                        <th style="text-align:center">
+                                            @Html.DisplayNameFor(model => model.MarcaDesc)
+                                        </th>
+
+                                        <th style="text-align:center">
+                                            @Html.DisplayNameFor(model => model.CategoriaDesc)
+                                        </th>
+                                        <th style="text-align:center">
+                                            @Html.DisplayNameFor(model => model.DescProducto)
+                                        </th>
+
+                                        <th style="text-align:center">
+                                            @Html.DisplayNameFor(model => model.FechaRegistro)
+                                        </th>
+                                        <th style="text-align:center">
+                                            @Html.DisplayNameFor(model => model.IdEstatusRegistro)
+                                        </th>
+                                        <th style="text-align:center">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-    </div>
-    <br />
-    <div class="collapse" id="collapseCliente">
-        <div class="card card-body">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="NombreCliente" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="NombreCliente" class="form-control" id="iNombreCliente" readonly="readonly" />
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="GiroComercialCliente" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="GiroComercialCliente" class="form-control" id="iGiroComercialCliente" readonly="readonly" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label asp-for="RfcCliente" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="RfcCliente" class="form-control" id="iRfcCliente" readonly="readonly" />
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="CalleCliente" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="CalleCliente" class="form-control" id="iCalleCliente" readonly="readonly" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label asp-for="CodigoPostalCliente" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="CodigoPostalCliente" class="form-control" id="iCodigoPostalCliente" readonly="readonly" />
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="ColoniaCliente" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="ColoniaCliente" class="form-control" id="iColoniaCliente" readonly="readonly" />
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="CiudadCliente" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="CiudadCliente" class="form-control" id="iCiudadCliente" readonly="readonly" />
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="EstadoCliente" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="EstadoCliente" class="form-control" id="iEstadoCliente" readonly="readonly" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="CorreoElectronicoCliente" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="CorreoElectronicoCliente" class="form-control" id="iCorreoElectronicoCliente" readonly="readonly" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label asp-for="TelefonoCliente" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="TelefonoCliente" class="form-control" id="iTelefonoCliente" readonly="readonly" />
-                    </div>
-                </div>
-            </div>
+        <br />
+        <div class="form-group">
+            <input type="submit" value="Crear" class="btn btn-success" />
+            <a asp-action="Index" class="btn btn-secondary">Regresar</a>
         </div>
-
+        <label id="lbl_estatus" class="control-label"></label>
     </div>
-    <br />
-    <div class="collapse" id="collapseContactoCliente">
-        <div class="card card-body">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label asp-for="PerfilDesc" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="PerfilDesc" class="form-control" id="iPerfilDesc" readonly="readonly" />
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="NombreClienteContacto" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="NombreClienteContacto" class="form-control" id="iNombreClienteContacto" readonly="readonly" />
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="CorreoElectronicoClienteContacto" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="CorreoElectronicoClienteContacto" class="form-control" id="iCorreoElectronicoClienteContacto" readonly="readonly" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label asp-for="TelefonoClienteContacto" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="TelefonoClienteContacto" class="form-control" id="iTelefonoClienteContacto" readonly="readonly" />
-                    </div>
-                </div>
-                 <div class="col-md-2">
-                    <div class="form-group">
-                        <label asp-for="TelefonoMovilClienteContact" class="control-label"></label>
-                        <input style="text-transform:uppercase" asp-for="TelefonoMovilClienteContact" class="form-control" id="iTelefonoMovilClienteContacto" readonly="readonly" />
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <br />
-    <div class="accordion" id="accordionPanelsStayOpenExample">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                    Productos
-                </button>
-            </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                <div class="accordion-body">
-                    Lista Productos
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <br />
-    <div class="form-group">
-        <input type="submit" value="Crear" class="btn btn-success" />
-        <a asp-action="Index" class="btn btn-secondary">Regresar</a>
-    </div>
-    <label id="lbl_estatus" class="control-label"></label>
-
 </form>
 
 
@@ -442,7 +527,7 @@
         });
 
     }
-        function DatosClientesContactos() {
+    function DatosClientesContactos() {
         var fCliente = document.getElementById("sLClienteContacto").value;
 
         $.ajax({
@@ -478,6 +563,71 @@
             }
         });
 
+    }
+
+    function LoadData() {
+            var vMarcas = document.getElementById("drpMarcas").value;
+            var vCategorias = document.getElementById("drpCategorias").value;
+        $("#tblProductos tbody tr").remove();
+        $.ajax({
+             type: "GET",
+            url: "/CatProductos/FiltroProductos/",
+            data: { idA: vMarcas, idB: vCategorias },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+             success: function (list) {
+                var $select_productos = $('#sLDescProducto');
+                $("#sLDescProducto").empty();
+
+                if (list.length == 0) {
+                    $select_productos.append('<option value="">SELECCIONAR</option>');
+             
+                }
+                else {
+                    $select_productos.append('<option value="">SELECCIONAR</option>');
+                    for (var i = 0, len = list.length; i < len; i++) {
+                        $select_productos.append('<option value=' + list[i].idProducto + '>' + list[i].descProducto + '</option>');
+             
+                    }
+                       $('#btnDescProducto').removeAttr("disabled");
+                }
+            },
+            error: function () {
+                alert("Error!!")
+            }
+        });
+        return false;
+    }
+     function AddData() {
+         var vProducto = document.getElementById("sLDescProducto").value;
+        $.ajax({
+             type: "GET",
+            url: "/CatProductos/FiltroProducto/",
+            data: { idA: vProducto},
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+           success: function (data) {
+                var items = '';
+                $.each(data, function (i, item) {
+                    var rows = "<tr>"
+                    + "<td class='prtoducttd'>" + item.CodigoInterno + "</td>"
+                    + "<td class='prtoducttd'>" + item.CodigoExterno + "</td>"
+                    + "<td class='prtoducttd'>" + item.MarcaDesc + "</td>"
+                    + "<td class='prtoducttd'>" + item.CategoriaDesc + "</td>"
+                    + "<td class='prtoducttd'>" + item.DescProducto + "</td>"
+                    + "<td class='prtoducttd'>" + item.FechaRegistro + "</td>"
+                    + "</tr>";
+                    $('#tblProductos tbody').append(rows);
+                });
+            },
+            error: function (ex) {
+                var r = jQuery.parseJSON(response.responseText);
+                alert("Message: " + r.Message);
+                alert("StackTrace: " + r.StackTrace);
+                alert("ExceptionType: " + r.ExceptionType);
+            }
+        });
+        return false;
     }
 </script>
 }

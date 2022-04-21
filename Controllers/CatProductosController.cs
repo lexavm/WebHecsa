@@ -98,6 +98,22 @@ namespace WebAdminHecsa.Controllers
         }
 
         // GET: CatProductos/Details/5
+
+        [HttpGet]
+        public ActionResult FiltroProductos(int idA, int idB)
+        {
+            var fProductos = _context.CatProductos
+                       .Where(s => s.IdMarca == idA && s.IdCategoria == idB).Distinct().ToList();
+            return Json(fProductos);
+        }
+
+        [HttpGet]
+        public ActionResult FiltroProducto(int idA)
+        {
+            var fProductos = _context.CatProductos
+                       .Where(s => s.IdProducto == idA).Distinct().ToList();
+            return Json(fProductos);
+        }
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -220,7 +236,8 @@ namespace WebAdminHecsa.Controllers
                     catProductos.MarcaDesc = fMarca[0].MarcaDesc;
                     catProductos.CategoriaDesc = fCategoria[0].CategoriaDesc;
                     catProductos.DescProducto = !string.IsNullOrEmpty(catProductos.DescProducto) ? catProductos.DescProducto.ToUpper() : catProductos.DescProducto;
-                    catProductos.SubCosto = catProductos.ProductoPrecioUno * (1 + (catProductos.PorcentajePrecioUno / 100));
+                    //catProductos.SubCosto = catProductos.ProductoPrecioUno * (1 + (catProductos.PorcentajePrecioUno / 100));
+                    catProductos.SubCosto = catProductos.ProductoPrecioUno;
 
                     _context.SaveChanges();
                     _context.Update(catProductos);
